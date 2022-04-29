@@ -3,10 +3,25 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './plantilla/header/header.component';
+import { FooterComponent } from './plantilla/footer/footer.component';
+import { BodyComponent } from './plantilla/body/body.component';
+import { LoginComponent } from './vistas/login/login.component';
+import { ClienteComponent } from './vistas/cliente/cliente.component';
+import { HomeClienteComponent } from './vistas/cliente/home-cliente/home-cliente.component';
+import { InicioComponent } from './vistas/inicio/inicio.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    BodyComponent,
+    LoginComponent,
+    ClienteComponent,
+    HomeClienteComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
