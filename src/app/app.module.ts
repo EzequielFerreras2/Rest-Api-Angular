@@ -5,6 +5,8 @@ import { AppRoutingModule, routingComponents} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './plantilla/header/header.component';
 import { FooterComponent } from './plantilla/footer/footer.component';
+import { ModalLoginComponent } from './vistas/login/modal-login/modal-login.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -13,11 +15,13 @@ import { FooterComponent } from './plantilla/footer/footer.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    routingComponents
+    routingComponents,
+    ModalLoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
