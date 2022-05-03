@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
 
   loginForm =new FormGroup({
     
+    
     usuario: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
 
@@ -19,6 +20,12 @@ export class LoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onLogin(form :any){
+
+    console.log(form)
+
   }
 
 }

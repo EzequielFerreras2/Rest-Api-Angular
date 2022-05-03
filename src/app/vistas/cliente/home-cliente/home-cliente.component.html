@@ -1,1 +1,25 @@
-<p>home-cliente works!</p>
+
+<div class="container">
+    <button type="button" class="btn btn-primary mt-3" (click)="addCliente()">Agregar Cliente</button>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Cedula</th>
+            <th scope="col">Membresia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes" (click)="updateCliente(cliente.id)">
+            <th scope="row">{{cliente.id}}</th>
+            <td>{{cliente.nombreCliente}}</td>
+            <td>{{cliente.cedula}}</td>
+            <td>{{cliente.membresia}}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+       
+</div>

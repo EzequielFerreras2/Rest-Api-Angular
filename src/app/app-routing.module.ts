@@ -7,7 +7,7 @@ import { ModalLoginComponent } from './vistas/login/modal-login/modal-login.comp
 
 const routes: Routes = [
 
-  {path:'', redirectTo:'login', pathMatch:'full'},
+  {path:'', redirectTo:'cliente', pathMatch:'full'},
   {path:'login',component:LoginComponent},
   {path:'cliente', component:HomeClienteComponent},
   {path:'inicio', component:InicioComponent},
