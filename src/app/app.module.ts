@@ -9,7 +9,8 @@ import { ModalLoginComponent } from './vistas/login/modal-login/modal-login.comp
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { AddClienteComponent } from './cliente/add/add-cliente/add-cliente.component'
+import { AddClienteComponent } from './cliente/add/add-cliente/add-cliente.component';
+import { EditClienteComponent } from './vistas/lciente/edit-cliente/edit-cliente.component'
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AddClienteComponent } from './cliente/add/add-cliente/add-cliente.compo
     FooterComponent,
     routingComponents,
     ModalLoginComponent,
-    AddClienteComponent
+    AddClienteComponent,
+    EditClienteComponent
   ],
   imports: [
     BrowserModule,

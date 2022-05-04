@@ -4,6 +4,8 @@ import { LoginComponent } from './vistas/login/login.component';
 import { HomeClienteComponent } from './vistas/cliente/home-cliente/home-cliente.component';
 import { InicioComponent } from './vistas/inicio/inicio.component';
 import { ModalLoginComponent } from './vistas/login/modal-login/modal-login.component';
+import { AddClienteComponent } from './vistas/cliente/add-cliente/add-cliente.component';
+import { EditClienteComponent } from './vistas/cliente/edit-cliente/edit-cliente.component';
 
 const routes: Routes = [
 
@@ -11,7 +13,9 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'cliente', component:HomeClienteComponent},
   {path:'inicio', component:InicioComponent},
-  {path:'modalLoing', component:ModalLoginComponent}
+  {path:'modalLoing', component:ModalLoginComponent},
+  {path:'add-cliente', component:AddClienteComponent},
+  {path:'edit-cliente', component:EditClienteComponent}
 
 
 ];
@@ -27,5 +31,7 @@ export const routingComponents=
   LoginComponent,
   HomeClienteComponent,
   InicioComponent,
-  ModalLoginComponent
+  ModalLoginComponent,
+  AddClienteComponent,
+  EditClienteComponent
 ]
