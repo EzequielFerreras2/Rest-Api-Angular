@@ -6,16 +6,23 @@ import { InicioComponent } from './vistas/inicio/inicio.component';
 import { ModalLoginComponent } from './vistas/login/modal-login/modal-login.component';
 import { AddClienteComponent } from './vistas/cliente/add-cliente/add-cliente.component';
 import { EditClienteComponent } from './vistas/cliente/edit-cliente/edit-cliente.component';
+import { HomeComponent } from './plantilla/home/home.component';
+
+
+
+
 
 const routes: Routes = [
 
-  {path:'', redirectTo:'cliente', pathMatch:'full'},
+  {path:'', redirectTo:'home', pathMatch:'full'},
   {path:'login',component:LoginComponent},
+  {path:'home', component:HomeComponent},
   {path:'cliente', component:HomeClienteComponent},
   {path:'inicio', component:InicioComponent},
   {path:'modalLoing', component:ModalLoginComponent},
   {path:'add-cliente', component:AddClienteComponent},
-  {path:'edit-cliente', component:EditClienteComponent}
+  {path:'edit-cliente/:id', component:EditClienteComponent}
+  
 
 
 ];
@@ -29,6 +36,7 @@ export class AppRoutingModule { }
 export const routingComponents=
 [
   LoginComponent,
+  HomeComponent,
   HomeClienteComponent,
   InicioComponent,
   ModalLoginComponent,

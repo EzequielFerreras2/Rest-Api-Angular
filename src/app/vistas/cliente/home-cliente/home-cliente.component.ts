@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteI } from 'src/app/Models/Cliente/cliente.interface';
 import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
+
+
+
+
+
 @Component({
   selector: 'home-cliente',
   templateUrl: './home-cliente.component.html',
@@ -11,7 +17,7 @@ export class HomeClienteComponent implements OnInit {
 clientes: ClienteI[] | undefined ; 
 
 
-  constructor( private api:ApiService ) { 
+  constructor( private api:ApiService, private rou:Router) { 
     
   }
 
@@ -19,7 +25,7 @@ clientes: ClienteI[] | undefined ;
 
     this.api.geAllCliente().subscribe(data =>{
 
-      console.log(data)
+      
       this. clientes = data;
 
     })
@@ -28,11 +34,11 @@ clientes: ClienteI[] | undefined ;
 
   updateCliente(id : Number){
 
-    console.log(id)
+    this.rou.navigate(['edit-cliente',id])
   }
 
   addCliente(){
-    
+    this.rou.navigate(['add-cliente'])
   }
 
 }
