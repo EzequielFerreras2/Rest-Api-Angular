@@ -5,12 +5,11 @@ import { AppRoutingModule, routingComponents} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './plantilla/header/header.component';
 import { FooterComponent } from './plantilla/footer/footer.component';
-import { ModalLoginComponent } from './vistas/login/modal-login/modal-login.component';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { AddClienteComponent } from './cliente/add/add-cliente/add-cliente.component';
-import { EditClienteComponent } from './vistas/lciente/edit-cliente/edit-cliente.component'
+
 
 
 @NgModule({
@@ -18,10 +17,8 @@ import { EditClienteComponent } from './vistas/lciente/edit-cliente/edit-cliente
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    routingComponents,
-    ModalLoginComponent,
-    AddClienteComponent,
-    EditClienteComponent
+    routingComponents
+  
   ],
   imports: [
     BrowserModule,
