@@ -21,7 +21,7 @@ const routes: Routes = [
   {path:'inicio', component:InicioComponent},
   {path:'modalLoing', component:ModalLoginComponent},
   {path:'add-cliente', component:AddClienteComponent},
-  {path:'edit-cliente/:id', component:EditClienteComponent}
+  {path:'cliente/:id', component:EditClienteComponent}
   
 
 

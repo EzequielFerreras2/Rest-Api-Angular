@@ -34,7 +34,7 @@ clientes: ClienteI[] | undefined ;
 
   updateCliente(id : Number){
 
-    this.rou.navigate(['edit-cliente',id])
+    this.rou.navigate(['cliente',id])
   }
 
   addCliente(){

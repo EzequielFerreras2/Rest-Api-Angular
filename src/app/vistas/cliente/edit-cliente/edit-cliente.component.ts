@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 
+import { ClienteI } from 'src/app/Models/Cliente/cliente.interface';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'edit-cliente',
@@ -9,13 +11,20 @@ import { ActivatedRoute,Router } from '@angular/router';
 })
 export class EditClienteComponent implements OnInit {
 
-  constructor( private activeroute:ActivatedRoute, private router: Router) { }
+  constructor( private activeroute:ActivatedRoute, private router: Router, private api:ApiService) { }
 
   ngOnInit(): void {
 
     let clienteId = this.activeroute.snapshot.paramMap.get('id');
+      console.log("Cliente: "+ clienteId)
 
-    console.log(clienteId)
+    this.api.GetClienteByid(clienteId).subscribe( data =>{
+       
+      console.log(data)
+    })
   }
+
+
+
 
 }

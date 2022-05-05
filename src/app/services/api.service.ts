@@ -24,5 +24,13 @@ geAllCliente():Observable<ClienteI[]> {
   return this.http.get<ClienteI[]>(direction);
 }
 
+GetClienteByid(id: any):Observable<ClienteI>{
+
+  let direction = this.url +"cliente/" +id;
+
+  return this.http.get<ClienteI>( direction);
+
+}
+
 
 }
