@@ -26,10 +26,17 @@ geAllCliente():Observable<ClienteI[]> {
 
 GetClienteByid(id: any):Observable<ClienteI>{
 
-  let direction = this.url +"cliente/" +id;
+  let direction = this.url +"cliente/id:" +id;
 
   return this.http.get<ClienteI>( direction);
 
+}
+
+updateCliente(id: any, form:ClienteI):Observable<ClienteI>{
+
+  let direction = this.url +"cliente/" +id;
+  console.log(form)
+  return this.http.put<ClienteI>(direction, form)
 }
 
 

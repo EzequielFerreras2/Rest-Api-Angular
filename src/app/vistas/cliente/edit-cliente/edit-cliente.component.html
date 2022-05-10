@@ -1,1 +1,44 @@
-<p>edit-cliente works!</p>
+<div class="container col-md-4">
+
+    <h1 class="mt-5">Editar Cliente</h1>
+
+    <form [formGroup]="editForm"  (ngSubmit)="postForm(editForm.value)">
+        <div class="container mt-3">
+
+            <div class=" mt-3 mb-3">
+                <label  class="form-label">Nombre Cliente</label>
+                <input type="text" class="form-control" formControlName="nombreCliente" >
+            </div>
+
+            <div class="mb-3">
+                <label  class="form-label">Cedula</label>
+                <input type="text" class="form-control" formControlName="cedula">
+            </div>
+
+
+            
+
+
+            <div class="mb-3">
+                <label  class="form-label">Membresia Prueba</label>
+                <select class="form-select" [(ngModel)]="memSelec.membresia" formControlName="membresia" aria-placeholder="Seleccione">  
+                    <option selected>==Tipo Membresia==</option>
+                    <option *ngFor="let membresias of membresiaCLiente" [value]="membresias.memb">
+                        {{membresias.memb}}
+                        
+                    </option>
+
+                  </select>
+                  {{memSelec.membresia}}
+                  
+            </div>
+              
+            <div class="btn-group">
+                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-danger">Cancel</button>
+            </div>
+              
+        </div>
+
+    </form>
+</div>
