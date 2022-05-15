@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ClienteI } from '../Models/Cliente/cliente.interface';
 import {ResponseI} from '../Models/Cliente/response.inteface'
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient,HttpContext,HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable, observable } from 'rxjs';
 
 
@@ -32,12 +32,25 @@ GetClienteByid(id: any):Observable<ClienteI>{
 
 }
 
-updateCliente(id: any, form:ClienteI):Observable<ClienteI>{
 
-  let direction = this.url +"cliente/" +id;
-  console.log(form)
-  return this.http.put<ClienteI>(direction, form)
+addCliente(form:ClienteI):Observable<ClienteI>{
+  
+  let direction = this.url +"cliente";
+  return this.http.post<ClienteI>(direction,form);
+
 }
 
+updateCliente(id: any, form:ClienteI):Observable<ClienteI>{
+
+  let direction = this.url +"cliente/id:" +id;
+  return this.http.put<ClienteI>(direction, form)
+  
+}
+
+removeCliente(id: any):Observable<ClienteI>{
+  let direction = this.url +"cliente/id:" +id;
+  return this.http.delete<ClienteI>(direction);
+
+}
 
 }

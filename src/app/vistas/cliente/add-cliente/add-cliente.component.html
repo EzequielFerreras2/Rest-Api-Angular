@@ -1,1 +1,61 @@
-<p>add-cliente works!</p>
+<div class="container col-md-4">
+
+    <h1 class="mt-5">Agregar Cliente</h1>
+
+    <form class="needs-validation" [formGroup]="addForm"  (ngSubmit)="postForm(addForm.value)" novalidate>
+        <div class="container mt-3">
+
+            <div class=" mt-3 mb-3">
+                <label  class="form-label">Nombre Cliente</label>
+                <input type="text" class="form-control" formControlName="nombreCliente" required>
+                <span class="badge bg-danger " *ngIf="nomCli && nomCli.invalid && nomCli.touched " >Favor ingrese nombre del cliente</span>
+            </div>
+
+            <div class="mb-3">
+                <label  class="form-label">Cedula</label>
+                <input type="text" class="form-control" formControlName="cedula">
+            
+
+                  <span class="badge bg-danger "  *ngIf="cedu && cedu.invalid && cedu.touched ">
+                    Favor Colocar Cedular valida
+                  </span>
+            </div>
+
+
+            
+
+
+            <div class="mb-3">
+                <label  class="form-label">Membresia </label>
+                <select class="form-select"  formControlName="membresia" aria-placeholder="Seleccione">  
+
+                    <option *ngFor="let membresias of membresiaCLiente" [value]="membresias.memb">
+                        
+                        {{membresias.memb}}
+                        
+                    </option>
+
+                  </select> 
+                  <span class="badge bg-danger "  *ngIf="mem && mem.invalid && mem.touched ">
+                    Seleccione una membresia.
+                  </span>
+            </div>
+
+            <div class="row">
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-success ">Guardar</button>
+                </div>
+            </div>
+            
+            <div class="row mt-2">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-dark " (click)="exit()">Salir</button>
+                </div>
+            </div>
+            
+            
+        </div>
+
+    </form>
+
+</div>

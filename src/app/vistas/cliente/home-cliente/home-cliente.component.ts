@@ -14,31 +14,34 @@ import { Router } from '@angular/router';
 })
 export class HomeClienteComponent implements OnInit {
   
-clientes: ClienteI[] | undefined ; 
+constructor( private api:ApiService, private rou:Router) { }
 
 
-  constructor( private api:ApiService, private rou:Router) { 
-    
-  }
+  clientes: ClienteI[] | undefined ;
 
   ngOnInit(): void {
 
-    this.api.geAllCliente().subscribe(data =>{
-
-      
-      this. clientes = data;
-
+    this.api.geAllCliente().subscribe(data =>
+    {
+      this.clientes = data;
     })
   }
 
 
-  updateCliente(id : Number){
-
+  updateCliente(id : Number)
+  {
     this.rou.navigate(['cliente',id])
   }
 
-  addCliente(){
+  addCliente()
+  {
     this.rou.navigate(['add-cliente'])
   }
+
+
+exit(){
+
+  this.rou.navigate(['cliente'])
+}
 
 }
