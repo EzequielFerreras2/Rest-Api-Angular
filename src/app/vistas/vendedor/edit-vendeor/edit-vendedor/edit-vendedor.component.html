@@ -1,0 +1,44 @@
+<div class="container col-md-4">
+
+    <h1 class="mt-5">Editar Vendedor</h1>
+
+    <form [formGroup]="editForm"  (ngSubmit)="postForm(editForm.value)">
+        <div class="container mt-3">
+
+            <div class=" mt-3 mb-3">
+                <label  class="form-label">Nombre Vendedor</label>
+                <input type="text" class="form-control" formControlName="nombreVendedor" required>
+                <span class="badge bg-danger " *ngIf="nomVend && nomVend .invalid && nomVend .touched " >Favor ingrese nombre del vendedor</span>
+            </div>
+
+            <div class="mb-3">
+                <label  class="form-label">Ventas</label>
+                <input type="text" class="form-control" formControlName="ventas">
+            
+
+                  <span class="badge bg-danger "  *ngIf="vent && vent.invalid && vent.touched ">
+                    Favor Colocar venta valida
+                  </span>
+            </div>
+
+
+
+            <div class="row">
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-success ">Guardar</button>
+                    <button type="button" class="btn btn-danger " (click)="removeForm()">Eliminar</button> 
+                </div>
+            </div>
+            
+            <div class="row mt-2">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-dark " (click)="exit()">Salir</button>
+                </div>
+            </div>
+            
+            
+        </div>
+
+    </form>
+
+</div>
