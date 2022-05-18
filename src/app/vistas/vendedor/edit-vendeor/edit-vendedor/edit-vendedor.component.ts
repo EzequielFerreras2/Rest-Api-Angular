@@ -52,54 +52,34 @@ export class EditVendedorComponent implements OnInit {
   {
     let id = this.activeroute.snapshot.paramMap.get('id')
 
-    try{
-      this.api.updateVendedor(id,form).subscribe(data =>{
+  
+      this.api.updateVendedor(id,form).subscribe(data =>
+      {
 
-        this.toast.success(`${data.nombreVendedor}`,'Vendedor Actualizado')
+        this.toast.success('Se Actualizo Vendedor','Vendedor Actualizado')
       },
-      (error) =>{
-          
-        console.log(error)
-        this.toast.warning(`${error}`,'Error')
-    }
-      
-      
-      );
 
+      (error) =>
       
-    }
-    catch (error){
-      
-      this.toast.error(`${error}`,'!Error')
-       console.log('Error:',error)
-    }
-    
+      { 
+        this.toast.warning(`${error}`,'! Error')
+      });
   }
+
 
   removeForm()
   {
     let id = this.activeroute.snapshot.paramMap.get('id')
-    try{
-      this.api.removeVendedor(id).subscribe(data =>{
+ 
+      this.api.removeVendedor(id).subscribe(data =>
+      {
 
         this.toast.warning(`${data.nombreVendedor}`,'Vendedor Eliminado')
       },
       
       (error) =>{
-          
-          console.log()
-          this.toast.warning(`${error}`,'Error')
-      }
-      
-      );
-    }
-
-    catch(error){
-
-      this.toast.error(`${error}`,'!Error')
-
-    }
-    
+          this.toast.warning(`${error}`,'! Error')
+      }); 
     
   }
 
