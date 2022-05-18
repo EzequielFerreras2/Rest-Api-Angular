@@ -64,6 +64,8 @@ export class EditVendedorComponent implements OnInit {
       { 
         this.toast.warning(`${error}`,'! Error')
       });
+
+      this.router.navigate(['vendedor'])
   }
 
 
@@ -80,7 +82,8 @@ export class EditVendedorComponent implements OnInit {
       (error) =>{
           this.toast.warning(`${error}`,'! Error')
       }); 
-    
+
+      this.router.navigate(['vendedor']);
   }
 
   get nomVend()
@@ -90,7 +93,7 @@ export class EditVendedorComponent implements OnInit {
 
   get vent()
   {
-    return this.editForm.get('cedula')
+    return this.editForm.get('ventas')
   };
 
 

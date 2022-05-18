@@ -23,7 +23,7 @@ const routes: Routes = [
   {path:'add-cliente', component:AddClienteComponent},
   {path:'cliente/:id', component:EditClienteComponent},
   {path:'vendedor', component:HomeVendedorComponent},
-  {path:'add-Vendedor', component:AddClienteComponent},
+  {path:'add-Vendedor', component:AddVendedorComponent},
   {path:'vendedor/:id', component:EditVendedorComponent}
   
 

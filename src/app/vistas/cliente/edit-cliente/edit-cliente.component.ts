@@ -69,18 +69,26 @@ export class EditClienteComponent implements OnInit {
         this.toast.warning(`${error}`,'! Error')
     });
 
-
+    this.router.navigate(['cliente'])
   }
 
   removeForm()
   {
     let id = this.activeroute.snapshot.paramMap.get('id')
-    this.api.removeCliente(id).subscribe(data =>{},
+    this.api.removeCliente(id).subscribe(data =>{
+      this.toast.warning('Cliente Eliminado','! Actualizado')
+    },
       
       (error) =>{
           this.toast.warning(`${error}`,'! Error')
       });
+
+      this.router.navigate(['cliente'])
   }
+
+
+
+
 
   get nomCli()
   {

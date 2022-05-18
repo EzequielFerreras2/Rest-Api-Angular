@@ -23,6 +23,7 @@ vendedores : VendedorI []| undefined;
    },
       
    (error) =>{
+     console.log(error)
        this.toast.warning(`${error}`,'! Error')
    });
    
@@ -36,13 +37,10 @@ vendedores : VendedorI []| undefined;
 
   addVendedor()
   {
-    this.router.navigate(['add-vendedor'])
+    this.router.navigate(['add-Vendedor'])
   }
 
 
-exit(){
 
-  this.router.navigate(['vendedor'])
-}
 
 }

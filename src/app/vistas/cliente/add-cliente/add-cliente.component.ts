@@ -15,7 +15,7 @@ import { AlertasService } from 'src/app/services/alerta/alertas.service';
 })
 export class AddClienteComponent implements OnInit {
 
-  constructor(private router: Router, private api:ApiService, private toastr:ToastrService, private alert:AlertasService) {  }
+  constructor(private router: Router, private api:ApiService, private toast:ToastrService) {  }
 
   ngOnInit(): void {
   }
@@ -43,14 +43,24 @@ export class AddClienteComponent implements OnInit {
 postForm(form: ClienteI  ){
   
   this.api.addCliente(form).subscribe( data=>{
-    console.log(data)
-  });
+
+    this.toast.success('Usuario Agregado exitosamente','! Agregado');
+    this.router.navigate(['cliente']);
+  },
+  
+  (error) =>
+  {
+    this.toast.warning(`${error}`,'! Error');
+  }
+ );
+
+
 }
 
 
   exit(){
 
-    this.router.navigate(['cliente'])
+    this.router.navigate(['cliente']);
   }
 
 
@@ -58,16 +68,16 @@ postForm(form: ClienteI  ){
 
   get nomCli()
   {
-    return this.addForm.get('nombreCliente')
+    return this.addForm.get('nombreCliente');
   };
 
   get cedu()
   {
-    return this.addForm.get('cedula')
+    return this.addForm.get('cedula');
   };
   get mem()
   {
-    return this.addForm.get('membresia')
+    return this.addForm.get('membresia');
   };
 
 
