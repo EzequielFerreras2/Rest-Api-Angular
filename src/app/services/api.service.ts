@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ClienteI } from '../Models/Cliente/cliente.interface';
 
-import { HttpClient,HttpContext,HttpHeaders, HttpRequest } from '@angular/common/http';
-import { Observable, observable } from 'rxjs';
+import { HttpClient,HttpContext,HttpErrorResponse,HttpHeaders, HttpRequest } from '@angular/common/http';
+import { throwError,catchError,Observable} from 'rxjs';
 
 
 
@@ -21,14 +21,18 @@ export class ApiService {
 geAllCliente():Observable<ClienteI[]> {
 
   let direction = this.url+"cliente";
-  return this.http.get<ClienteI[]>(direction);
+  return this.http.get<ClienteI[]>(direction).pipe(
+    catchError( this.handleError)
+  );
 }
 
 GetClienteByid(id: any):Observable<ClienteI>{
 
   let direction = this.url +"cliente/id:" +id;
 
-  return this.http.get<ClienteI>( direction);
+  return this.http.get<ClienteI>( direction).pipe(
+    catchError( this.handleError)
+  );
 
 }
 
@@ -36,20 +40,33 @@ GetClienteByid(id: any):Observable<ClienteI>{
 addCliente(form:ClienteI):Observable<ClienteI>{
   
   let direction = this.url +"cliente";
-  return this.http.post<ClienteI>(direction,form);
+  return this.http.post<ClienteI>(direction,form).pipe(
+    catchError( this.handleError)
+  );
 
 }
 
 updateCliente(id: any, form:ClienteI):Observable<ClienteI>{
 
   let direction = this.url +"cliente/id:" +id;
-  return this.http.put<ClienteI>(direction, form)
+  return this.http.put<ClienteI>(direction, form).pipe(
+    catchError( this.handleError)
+  );
   
 }
 
 removeCliente(id: any):Observable<ClienteI>{
   let direction = this.url +"cliente/id:" +id;
-  return this.http.delete<ClienteI>(direction);
+  return this.http.delete<ClienteI>(direction).pipe(
+    catchError( this.handleError)
+  );
+
+}
+
+handleError(error: HttpErrorResponse){
+
+  console.log(error)
+   return throwError(error.error.title)
 
 }
 

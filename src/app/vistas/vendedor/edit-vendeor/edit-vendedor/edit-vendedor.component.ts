@@ -56,7 +56,7 @@ export class EditVendedorComponent implements OnInit {
       this.api.updateVendedor(id,form).subscribe(data =>
       {
 
-        this.toast.success('Se Actualizo Vendedor','Vendedor Actualizado')
+        this.toast.success('Vendedor Actualizado','! Actualizado')
       },
 
       (error) =>

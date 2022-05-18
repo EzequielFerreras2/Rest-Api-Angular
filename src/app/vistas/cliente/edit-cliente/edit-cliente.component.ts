@@ -15,7 +15,7 @@ import { AlertasService } from 'src/app/services/alerta/alertas.service';
 })
 export class EditClienteComponent implements OnInit {
 
-  constructor( private activeroute:ActivatedRoute, private router: Router, private api:ApiService, private toastr:ToastrService, private alert:AlertasService ) { }
+  constructor( private activeroute:ActivatedRoute, private router: Router, private api:ApiService, private toast:ToastrService) { }
 
 
   
@@ -62,14 +62,24 @@ export class EditClienteComponent implements OnInit {
   {
     let id = this.activeroute.snapshot.paramMap.get('id')
     this.api.updateCliente(id,form).subscribe(data =>{
-
+      this.toast.success('Cliente Actualizado','! Actualizado')
+    },
+      
+    (error) =>{
+        this.toast.warning(`${error}`,'! Error')
     });
+
+
   }
 
   removeForm()
   {
     let id = this.activeroute.snapshot.paramMap.get('id')
-    this.api.removeCliente(id).subscribe(data =>{});
+    this.api.removeCliente(id).subscribe(data =>{},
+      
+      (error) =>{
+          this.toast.warning(`${error}`,'! Error')
+      });
   }
 
   get nomCli()
