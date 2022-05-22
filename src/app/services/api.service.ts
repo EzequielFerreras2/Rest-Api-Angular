@@ -66,7 +66,7 @@ removeCliente(id: any):Observable<ClienteI>{
 handleError(error: HttpErrorResponse){
 
   console.log(error)
-   return throwError(error.message || error.error.title)
+   return throwError('error en el server'|| error.error.title)
 
 }
 

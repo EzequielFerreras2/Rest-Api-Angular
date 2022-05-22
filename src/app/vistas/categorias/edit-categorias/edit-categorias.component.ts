@@ -84,6 +84,7 @@ export class EditCategoriasComponent implements OnInit {
       this.router.navigate(['Categoria']);
   }
 
+  
   get cate()
   {
     return this.editForm.get('categoria')
