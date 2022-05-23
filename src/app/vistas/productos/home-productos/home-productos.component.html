@@ -1,1 +1,28 @@
-<p>home-productos works!</p>
+<div class="container">
+    <h1 class="mt-5">Cliente</h1>
+      <button type="button" class="btn btn-primary mt-3" (click)="addProducto()">Agregar Producto</button>
+      <hr>
+      <table class="table  table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Producto</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of productos" (click)="updateProducto(producto.id)">
+              <th scope="row">{{producto.id}}</th>
+              <td>{{producto.nombreProducto}}</td>
+              <td >{{cateogriaId(producto.categoryId)}}</td>
+              <td>{{producto.cantidad}}</td>
+              <td>{{producto.precio}}</td>
+            </tr>
+            
+          </tbody>
+        </table>
+         
+  </div>
+  

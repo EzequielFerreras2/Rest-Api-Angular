@@ -12,6 +12,11 @@ export class ProductosService {
 
   constructor(private http:HttpClient) { }
 
+  cateogriaid(id: number)
+  {
+    return id;
+  }
+
   getAllProductos():Observable<ProductosI[]>{
     let direcction = this.url+"producto"
     return this.http.get<ProductosI[]>(direcction).pipe(

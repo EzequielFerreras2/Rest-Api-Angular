@@ -76,6 +76,7 @@ export class EditClienteComponent implements OnInit {
   {
     let id = this.activeroute.snapshot.paramMap.get('id')
     this.api.removeCliente(id).subscribe(data =>{
+    
       this.toast.warning('Cliente Eliminado','! Actualizado')
     },
       
