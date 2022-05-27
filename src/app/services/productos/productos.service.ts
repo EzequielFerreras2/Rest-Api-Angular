@@ -31,8 +31,7 @@ export class ProductosService {
 
 
   handleError(error: HttpErrorResponse){
-
-    console.log(error)
+ 
      return throwError(error.message || 'Error en el Servidor' || error.error.title)
   
   }

@@ -15,6 +15,7 @@ export class HomeProductosComponent implements OnInit {
 
   productos: ProductosI[] | undefined ;
   categorias: CategoriasI| undefined ;
+  category: any | undefined ;
 
   constructor( private apiProdcucts:ProductosService, private apiCategoria: CategoriasService, private rou:Router) { }
 
@@ -23,19 +24,21 @@ export class HomeProductosComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-    this.apiCategoria.getCategoriaByid(this.cateogriaId).subscribe( data =>{
-       this.categorias = data 
+    
+    
+    this.apiCategoria.getCategoriaByid(1).subscribe( data =>{
       
-       console.log(data.id)
-      
-      })
+      this.categorias = data 
+      this.category= data.categoria;
+     console.log(data.categoria)
+     
+     })
 
 
 
     this.apiProdcucts.getAllProductos().subscribe(data =>
     {
-
+      
       this.productos = data;
       
     })
@@ -43,6 +46,8 @@ export class HomeProductosComponent implements OnInit {
 
    
   }
+
+ 
 
   cateogriaId(id: number)
   {
