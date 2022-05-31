@@ -26,7 +26,43 @@ export class ProductosService {
 
 
 
-
+  getProductoByid(id: any):Observable<ProductosI>{
+  
+    let direction = this.url +"producto/id:" +id;
+  
+    return this.http.get<ProductosI>( direction).pipe(
+      catchError( this.handleError)
+    );
+  
+  }
+  
+  
+  addProducto(form:ProductosI):Observable<ProductosI>{
+    
+    let direction = this.url +"producto";
+    return this.http.post<ProductosI>(direction,form).pipe(
+      catchError( this.handleError)
+    );
+  
+  }
+  
+  updateProducto(id: any, form:ProductosI):Observable<ProductosI>{
+  
+    let direction = this.url +"producto/id:" +id;
+    return this.http.put<ProductosI>(direction, form).pipe(
+      catchError( this.handleError)
+    )
+    
+    
+  }
+  
+  removeProducto(id: any):Observable<ProductosI>{
+    let direction = this.url +"producto/id:" +id;
+    return this.http.delete<ProductosI>(direction).pipe(
+      catchError( this.handleError)
+    );
+  
+  }
 
 
 
