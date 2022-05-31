@@ -23,7 +23,9 @@ constructor( private api:ApiService, private rou:Router) { }
 
     this.api.geAllCliente().subscribe(data =>
     {
+      
       this.clientes = data;
+      console.log(data)
     })
   }
 

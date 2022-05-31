@@ -24,18 +24,6 @@ export class HomeProductosComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
-    
-    this.apiCategoria.getCategoriaByid(1).subscribe( data =>{
-      
-      this.categorias = data 
-      this.category= data.categoria;
-     console.log(data.categoria)
-     
-     })
-
-
-
     this.apiProdcucts.getAllProductos().subscribe(data =>
     {
       
@@ -57,12 +45,12 @@ export class HomeProductosComponent implements OnInit {
   
   updateProducto(id : Number)
   {
-    this.rou.navigate(['producto',id])
+    this.rou.navigate(['productos',id])
   }
 
   addProducto()
   {
-    this.rou.navigate(['add-producto'])
+    this.rou.navigate(['add-productos'])
   }
 
 

@@ -21,7 +21,6 @@ Categorias : CategoriasI []| undefined;
 
     
     this.Categorias = data;
-    this.Categorias.find( data => data.id === 1)
     
    },
       
