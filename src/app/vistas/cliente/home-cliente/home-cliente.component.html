@@ -13,11 +13,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let cliente of clientes" (click)="updateCliente(cliente.id)">
-            <th scope="row">{{cliente.id}}</th>
-            <td>{{cliente.nombreCliente}}</td>
-            <td>{{cliente.cedula}}</td>
-            <td>{{cliente.membresia}}</td>
+          <tr *ngFor="let cliente of clientes" (click)="updateCliente(cliente.Id)">
+            <th scope="row">{{cliente.Id}}</th>
+            <td>{{cliente.NombreCliente}}</td>
+            <td>{{cliente.Cedula}}</td>
+            <td>{{cliente.Membresia}}</td>
           </tr>
           
         </tbody>

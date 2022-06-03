@@ -14,8 +14,8 @@ import { ProductosService } from 'src/app/services/productos/productos.service';
 export class HomeProductosComponent implements OnInit {
 
   productos: ProductosI[] | undefined ;
-  categorias: CategoriasI| undefined ;
-  category: any | undefined ;
+  categorias: CategoriasI[]| undefined ;
+  
 
   constructor( private apiProdcucts:ProductosService, private apiCategoria: CategoriasService, private rou:Router) { }
 
@@ -24,10 +24,13 @@ export class HomeProductosComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.apiProdcucts.getAllProductos().subscribe(data =>
+    this.apiProdcucts.getAllProductos().subscribe(
+      data =>
     {
       
       this.productos = data;
+      
+      console.log(data)
       
     })
 

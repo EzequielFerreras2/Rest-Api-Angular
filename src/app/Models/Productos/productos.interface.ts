@@ -1,11 +1,11 @@
 export interface ProductosI {
-    id :number,
-    nombreProducto : string,
-    categoryId : number,
-    categories: any,
-    cetalleFacturaId : number,
-    detalleFacturas :any
-    cantidad : number
-    precio: number
+    Id :number,
+    NombreProducto : string,
+    CategoryId : number,
+    Categories: any,
+    DetalleFacturaId : number,
+    DetalleFacturas :any,
+    Cantidad : number,
+    Precio: number
 
 }

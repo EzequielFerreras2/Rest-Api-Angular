@@ -50,9 +50,9 @@ export class EditClienteComponent implements OnInit {
        this.editForm.setValue({
          
          'id': clienteId,
-         'nombreCliente': this.datosCliente.nombreCliente,
-         'cedula': this.datosCliente.cedula,
-         'membresia': this.datosCliente.membresia
+         'nombreCliente': this.datosCliente.NombreCliente,
+         'cedula': this.datosCliente.Cedula,
+         'membresia': this.datosCliente.Membresia
        });
     })
   }

@@ -1,8 +1,8 @@
 export interface ClienteI{
 
-    id : Number;
-    nombreCliente:string;
-    cedula:string;
-    membresia: string;
-    factura: any
+    Id : Number,
+    NombreCliente:string,
+    Cedula:string,
+    Membresia:string,
+    Factura: any
 }

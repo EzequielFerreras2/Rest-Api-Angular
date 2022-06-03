@@ -14,13 +14,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let producto of productos" (click)="updateProducto(producto.id)">
-              <th scope="row">{{producto.id}}</th>
-              <td>{{producto.nombreProducto}}</td>
-              <td >{{producto.categoryId}}</td>
-              <td>{{producto.categories.categoria}}</td>
-              <td>{{producto.cantidad}}</td>
-              <td>{{producto.precio}}</td>
+            <tr *ngFor="let producto of productos" (click)="updateProducto(producto.Id)">
+              <th scope="row">{{producto.Id}}</th>
+              <td>{{producto.NombreProducto}}</td>
+              <td >{{producto.CategoryId}}</td>
+              <td>{{producto.Categories.Categoria}}</td>
+              <td>{{producto.Cantidad}}</td>
+              <td>{{producto.Precio}}</td>
             </tr>
             
           </tbody>

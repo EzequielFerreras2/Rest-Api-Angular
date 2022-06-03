@@ -13,12 +13,11 @@ export class HomeCategoriaComponent implements OnInit {
 
   constructor( private router : Router, private api: CategoriasService, private toast: ToastrService) { }
 
-Categorias : CategoriasI []| undefined;
-
+  Categorias!: CategoriasI[];
+  
   ngOnInit(): void {
 
    this.api.getAllCategoria().subscribe(data=>{
-
     
     this.Categorias = data;
     
