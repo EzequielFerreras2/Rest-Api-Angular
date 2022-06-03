@@ -69,7 +69,8 @@ export class EditClienteComponent implements OnInit {
         this.toast.warning(`${error}`,'! Error')
     });
 
-    this.router.navigate(['cliente'])
+    this.router.navigate(['cliente']);
+    
   }
 
   removeForm()
