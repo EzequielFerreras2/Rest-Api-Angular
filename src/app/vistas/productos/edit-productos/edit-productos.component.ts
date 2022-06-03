@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ProductosI } from 'src/app/Models/Productos/productos.interface';
 import { ProductosService } from 'src/app/services/productos/productos.service';
+import { CategoriasI } from 'src/app/Models/Categorias/categorias.interface';
 
 @Component({
   selector: 'edit-productos',
@@ -16,6 +17,7 @@ export class EditProductosComponent implements OnInit {
 
 
   datosProductos: ProductosI | undefined;
+  datosCtegoria: CategoriasI|undefined;
 
   editForm= new FormGroup({
 
@@ -61,7 +63,7 @@ export class EditProductosComponent implements OnInit {
         this.toast.warning(`${error}`,'! Error')
     });
 
-    this.router.navigate(['producto']);
+    this.router.navigate(['productos']);
     
   }
 
@@ -77,7 +79,7 @@ export class EditProductosComponent implements OnInit {
           this.toast.warning(`${error}`,'! Error')
       });
 
-      this.router.navigate(['producto'])
+      this.router.navigate(['productos'])
   }
 
 
@@ -103,7 +105,7 @@ export class EditProductosComponent implements OnInit {
 
   exit(){
 
-    this.router.navigate(['Producto'])
+    this.router.navigate(['productos'])
   }
 
 
