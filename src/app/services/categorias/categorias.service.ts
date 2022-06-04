@@ -16,15 +16,15 @@ export class CategoriasService {
 
   getAllCategoria():Observable<CategoriasI[]> {
 
-    let direction = this.url+"category";
+    let direction = this.url+"Category";
     return this.http.get<CategoriasI[]>(direction).pipe(
       catchError( this.handleError)
     );
   }
   
-  getCategoriaByid(id: any):Observable<CategoriasI>{
+  getCategoriaByid(Id: any):Observable<CategoriasI>{
   
-    let direction = this.url +"category/id:" +id;
+    let direction = this.url +"Category/Id:" +Id;
   
     return this.http.get<CategoriasI>( direction).pipe(
       catchError( this.handleError)
@@ -35,16 +35,16 @@ export class CategoriasService {
   
   addCategoria(form:CategoriasI):Observable<CategoriasI>{
     
-    let direction = this.url +"category";
+    let direction = this.url +"Category";
     return this.http.post<CategoriasI>(direction,form).pipe(
       catchError( this.handleError)
     );
   
   }
   
-  updateCategoria(id: any, form:CategoriasI):Observable<CategoriasI>{
+  updateCategoria(Id: any, form:CategoriasI):Observable<CategoriasI>{
   
-    let direction = this.url +"category/id:" +id;
+    let direction = this.url +"Category/Id:" +Id;
     return this.http.put<CategoriasI>(direction, form).pipe(
       catchError( this.handleError)
     )
@@ -52,8 +52,8 @@ export class CategoriasService {
     
   }
   
-  removeCategoria(id: any):Observable<CategoriasI>{
-    let direction = this.url +"category/id:" +id;
+  removeCategoria(Id: any):Observable<CategoriasI>{
+    let direction = this.url +"Category/Id:" +Id;
     return this.http.delete<CategoriasI>(direction).pipe(
       catchError( this.handleError)
     );

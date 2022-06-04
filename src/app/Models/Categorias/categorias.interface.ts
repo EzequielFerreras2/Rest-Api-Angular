@@ -1,5 +1,5 @@
  export interface CategoriasI{
-     id:number,
-     categoria:string,
+     Id:number,
+     Categoria:string,
      Producto:[]
  }

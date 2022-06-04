@@ -32,9 +32,9 @@ const routes: Routes = [
   {path:'vendedor', component:HomeVendedorComponent},
   {path:'add-Vendedor', component:AddVendedorComponent},
   {path:'vendedor/:id', component:EditVendedorComponent},
-  {path:'categoria', component:HomeCategoriaComponent},
+  {path:'Categoria', component:HomeCategoriaComponent},
   {path:'add-Categoria', component:AddCategoriasComponent},
-  {path:'categoria/:id', component:EditCategoriasComponent},
+  {path:'Categoria/:id', component:EditCategoriasComponent},
   {path:'productos', component:HomeProductosComponent},
   {path:'add-productos', component:AddProductosComponent},
   {path:'productos/:id', component:EditProductosComponent} 

@@ -20,7 +20,7 @@ export class AddCategoriasComponent implements OnInit {
   addForm= new FormGroup({
 
     
-    categoria: new FormControl('',[Validators.required]),
+    Categoria: new FormControl('',[Validators.required]),
     
 
   });
@@ -47,21 +47,21 @@ export class AddCategoriasComponent implements OnInit {
         this.toast.warning(`${error}`,'! Error')
       });
 
-      this.router.navigate(['categoria'])
+      this.router.navigate(['Categoria'])
   }
 
 
 
   get cate()
   {
-    return this.addForm.get('categoria')
+    return this.addForm.get('Categoria')
   };
 
 
 
   exit(){
 
-    this.router.navigate(['categoria'])
+    this.router.navigate(['Categoria'])
   }
 
 

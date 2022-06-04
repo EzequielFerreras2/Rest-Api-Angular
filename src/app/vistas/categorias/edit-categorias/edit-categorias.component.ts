@@ -20,8 +20,8 @@ export class EditCategoriasComponent implements OnInit {
 
   editForm= new FormGroup({
 
-    id: new FormControl(''), 
-    categoria: new FormControl('',[Validators.required]),
+    Id: new FormControl(''), 
+    Categoria: new FormControl('',[Validators.required]),
     
 
   });
@@ -37,8 +37,8 @@ export class EditCategoriasComponent implements OnInit {
 
        this.editForm.setValue({
          
-         'id': categoriaId,
-         'categoria': this.datosCategoria.categoria,
+         'Id': categoriaId,
+         'Categoria': this.datosCategoria.Categoria,
              
        });
     })
@@ -48,10 +48,10 @@ export class EditCategoriasComponent implements OnInit {
 
   postForm(form: CategoriasI )
   {
-    let id = this.activeroute.snapshot.paramMap.get('id')
+    let Id = this.activeroute.snapshot.paramMap.get('id')
 
   
-      this.api.updateCategoria(id,form).subscribe(data =>
+      this.api.updateCategoria(Id,form).subscribe(data =>
       {
 
         this.toast.success('Categoria Actualizada','! Actualizado')
@@ -63,7 +63,7 @@ export class EditCategoriasComponent implements OnInit {
         this.toast.warning(`${error}`,'! Error')
       });
 
-      this.router.navigate(['categoria'])
+      this.router.navigate(['Categoria'])
   }
 
 
@@ -74,7 +74,7 @@ export class EditCategoriasComponent implements OnInit {
       this.api.removeCategoria(id).subscribe(data =>
       {
 
-        this.toast.warning(`${data.categoria}`,'Categoria Eliminada')
+        this.toast.warning(`${data.Categoria}`,'Categoria Eliminada')
       },
       
       (error) =>{
@@ -87,7 +87,7 @@ export class EditCategoriasComponent implements OnInit {
   
   get cate()
   {
-    return this.editForm.get('categoria')
+    return this.editForm.get('Categoria')
   };
 
  

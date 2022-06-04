@@ -31,9 +31,9 @@ export class HomeCategoriaComponent implements OnInit {
   }
 
 
-  updateCategoria(id : Number)
+  updateCategoria(Id : Number)
   {
-    this.router.navigate(['categoria',id])
+    this.router.navigate(['Categoria',Id])
   }
 
   addCategoria()
