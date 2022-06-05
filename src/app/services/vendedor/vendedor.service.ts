@@ -17,7 +17,7 @@ export class VendedorService {
 
   getAllVendedor():Observable<VendedorI[]> {
 
-    let direction = this.url+"vendedor";
+    let direction = this.url+"Vendedor";
     return this.http.get<VendedorI[]>(direction).pipe(
       catchError( this.handleError)
     );
@@ -25,7 +25,7 @@ export class VendedorService {
   
   getVendedorByid(id: any):Observable<VendedorI>{
   
-    let direction = this.url +"vendedor/id:" +id;
+    let direction = this.url +"Vendedor/Id:" +id;
   
     return this.http.get<VendedorI>( direction).pipe(
       catchError( this.handleError)

@@ -39,8 +39,8 @@ export class EditVendedorComponent implements OnInit {
        this.editForm.setValue({
          
          'id': VendedorId,
-         'nombreVendedor': this.datosVendedor.nombreVendedor,
-         'ventas': this.datosVendedor.ventas
+         'nombreVendedor': this.datosVendedor.NombreVendedor,
+         'ventas': this.datosVendedor.Ventas
          
        });
     })
@@ -76,7 +76,7 @@ export class EditVendedorComponent implements OnInit {
       this.api.removeVendedor(id).subscribe(data =>
       {
 
-        this.toast.warning(`${data.nombreVendedor}`,'Vendedor Eliminado')
+        this.toast.warning(`${data.NombreVendedor}`,'Vendedor Eliminado')
       },
       
       (error) =>{

@@ -33,6 +33,7 @@ export class HomeProductosComponent implements OnInit {
       console.log(data)
       
     })
+    
 
 
    
@@ -46,9 +47,9 @@ export class HomeProductosComponent implements OnInit {
   }
  
   
-  updateProducto(id : Number)
+  updateProducto(Id : Number)
   {
-    this.rou.navigate(['productos',id])
+    this.rou.navigate(['productos',Id])
   }
 
   addProducto()

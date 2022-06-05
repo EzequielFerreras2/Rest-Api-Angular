@@ -26,9 +26,9 @@ geAllCliente():Observable<ClienteI[]> {
   );
 }
 
-GetClienteByid(id: any):Observable<ClienteI>{
+GetClienteByid(Id: any):Observable<ClienteI>{
 
-  let direction = this.url +"cliente/id:" +id;
+  let direction = this.url +"Cliente/Id:" +Id;
 
   return this.http.get<ClienteI>( direction).pipe(
     catchError( this.handleError)
@@ -39,24 +39,24 @@ GetClienteByid(id: any):Observable<ClienteI>{
 
 addCliente(form:ClienteI):Observable<ClienteI>{
   
-  let direction = this.url +"cliente";
+  let direction = this.url +"Cliente";
   return this.http.post<ClienteI>(direction,form).pipe(
     catchError( this.handleError)
   );
 
 }
 
-updateCliente(id: any, form:ClienteI):Observable<ClienteI>{
+updateCliente(Id: any, form:ClienteI):Observable<ClienteI>{
 
-  let direction = this.url +"cliente/id:" +id;
+  let direction = this.url +"Cliente/Id:" +Id;
   return this.http.put<ClienteI>(direction, form).pipe(
     catchError( this.handleError)
   );
   
 }
 
-removeCliente(id: any):Observable<ClienteI>{
-  let direction = this.url +"cliente/id:" +id;
+removeCliente(Id: any):Observable<ClienteI>{
+  let direction = this.url +"Cliente/Id:" +Id;
   return this.http.delete<ClienteI>(direction).pipe(
     catchError( this.handleError)
   );

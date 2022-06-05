@@ -14,10 +14,10 @@
         </thead>
         <tbody>
 
-          <tr *ngFor="let vendedor of vendedores" (click)="updateVendedor(vendedor.id)">
-            <th scope="row">{{vendedor.id}}</th>
-            <td>{{vendedor.nombreVendedor}}</td>
-            <td>{{vendedor.ventas}}</td>
+          <tr *ngFor="let vendedor of vendedores" (click)="updateVendedor(vendedor.Id)">
+            <th scope="row">{{vendedor.Id}}</th>
+            <td>{{vendedor.NombreVendedor}}</td>
+            <td>{{vendedor.Ventas}}</td>
           </tr>
           
         </tbody>

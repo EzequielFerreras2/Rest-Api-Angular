@@ -18,7 +18,7 @@ export class ProductosService {
   }
 
   getAllProductos():Observable<ProductosI[]>{
-    let direcction = this.url+"producto"
+    let direcction = this.url+"Producto"
     return this.http.get<ProductosI[]>(direcction).pipe(
       catchError(this.handleError)
     )
@@ -26,9 +26,9 @@ export class ProductosService {
 
 
 
-  getProductoByid(id: any):Observable<ProductosI>{
+  getProductoByid(Id: any):Observable<ProductosI>{
   
-    let direction = this.url +"producto/id:" +id;
+    let direction = this.url +"Producto/Id:" +Id;
   
     return this.http.get<ProductosI>( direction).pipe(
       catchError( this.handleError)
@@ -39,16 +39,16 @@ export class ProductosService {
   
   addProducto(form:ProductosI):Observable<ProductosI>{
     
-    let direction = this.url +"producto";
+    let direction = this.url +"Producto";
     return this.http.post<ProductosI>(direction,form).pipe(
       catchError( this.handleError)
     );
   
   }
   
-  updateProducto(id: any, form:ProductosI):Observable<ProductosI>{
+  updateProducto(Id: any, form:ProductosI):Observable<ProductosI>{
   
-    let direction = this.url +"producto/id:" +id;
+    let direction = this.url +"Producto/Id:" +Id;
     return this.http.put<ProductosI>(direction, form).pipe(
       catchError( this.handleError)
     )
@@ -56,8 +56,8 @@ export class ProductosService {
     
   }
   
-  removeProducto(id: any):Observable<ProductosI>{
-    let direction = this.url +"producto/id:" +id;
+  removeProducto(Id: any):Observable<ProductosI>{
+    let direction = this.url +"producto/Id:" +Id;
     return this.http.delete<ProductosI>(direction).pipe(
       catchError( this.handleError)
     );

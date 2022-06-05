@@ -1,7 +1,7 @@
 export interface VendedorI{
 
-    id : Number;
-    nombreVendedor:string;
-    ventas:Number;
-    facturas: any;
+    Id : Number;
+    NombreVendedor:string;
+    Ventas:Number;
+    Facturas: any;
 }

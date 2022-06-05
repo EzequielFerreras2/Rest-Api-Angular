@@ -5,6 +5,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ProductosI } from 'src/app/Models/Productos/productos.interface';
 import { ProductosService } from 'src/app/services/productos/productos.service';
 import { CategoriasI } from 'src/app/Models/Categorias/categorias.interface';
+import { CategoriasService } from 'src/app/services/categorias/categorias.service';
 
 @Component({
   selector: 'edit-productos',
@@ -13,19 +14,19 @@ import { CategoriasI } from 'src/app/Models/Categorias/categorias.interface';
 })
 export class EditProductosComponent implements OnInit {
 
-  constructor(private activeroute:ActivatedRoute, private router: Router, private api:ProductosService, private toast:ToastrService) { }
+  constructor(private activeroute:ActivatedRoute, private router: Router, private api:ProductosService, private toast:ToastrService, private apiC:CategoriasService) { }
 
 
   datosProductos: ProductosI | undefined;
-  datosCtegoria: CategoriasI|undefined;
+  datosCategorias: CategoriasI[]|undefined;
 
   editForm= new FormGroup({
 
     Id: new FormControl(''), 
-    nombreProducto: new FormControl('',[Validators.required]),
+    NombreProducto: new FormControl('',[Validators.required]),
     IdCategoria: new FormControl('',[Validators.required]),
     Categoria: new FormControl('',[Validators.required]),
-    Catidad: new FormControl('',[Validators.required]),
+    Cantidad: new FormControl('',[Validators.required]),
     Precio: new FormControl('',[Validators.required])
 
   });
@@ -34,28 +35,42 @@ export class EditProductosComponent implements OnInit {
 
   ngOnInit(): void {
 
+    
+    
     let ProductoId = this.activeroute.snapshot.paramMap.get('id');
+
+    this.apiC.getAllCategoria().subscribe(datac=>{
+    
+      this.datosCategorias = datac
+      console.log(datac)
+     }),
 
     this.api.getProductoByid(ProductoId).subscribe( data =>{
        this.datosProductos = data;
+      console.log(data)
+      
 
        this.editForm.setValue({
          
          'Id': ProductoId,
          'NombreProducto': this.datosProductos.NombreProducto,
-         'IdCategoria': this.datosProductos.CategoryId,
-         'Categoria': this.datosProductos.Categories.categoria,
+         'IdCategoria': this.datosCategorias,
+         'Categoria': this.datosProductos.Categories,
          'Cantidad': this.datosProductos.Cantidad,
          'Precio': this.datosProductos.Precio
        });
     })
+
+    
+
   }
 
 
   postForm(form: ProductosI )
   {
-    let id = this.activeroute.snapshot.paramMap.get('id')
-    this.api.updateProducto(id,form).subscribe(data =>{
+    let Id = this.activeroute.snapshot.paramMap.get('id')
+    this.api.updateProducto(Id,form).subscribe(data =>{
+      console.log('Post '+data)
       this.toast.success('Producto Actualizado','! Actualizado')
     },
       
@@ -69,8 +84,8 @@ export class EditProductosComponent implements OnInit {
 
   removeForm()
   {
-    let id = this.activeroute.snapshot.paramMap.get('id')
-    this.api.removeProducto(id).subscribe(data =>{
+    let Id = this.activeroute.snapshot.paramMap.get('id')
+    this.api.removeProducto(Id).subscribe(data =>{
     
       this.toast.warning('Producto Eliminado','! Actualizado')
     },
@@ -85,7 +100,7 @@ export class EditProductosComponent implements OnInit {
 
   get nomPro()
   {
-    return this.editForm.get('NombrePliente')
+    return this.editForm.get('NombreProducto')
   };
 
   get cate()
