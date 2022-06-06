@@ -37,22 +37,24 @@ export class AddProductosComponent implements OnInit {
     this.apiC.getAllCategoria().subscribe(datac=>{
     
       this.datosCategorias = datac
+
+   
+  
       
      })
 
-
-
+    
   }
 
 
   postForm(form: ProductosI )
   {
-
+    form.DetalleFacturaId=1;
   
       this.api.addProducto(form).subscribe(data =>
       {
-        form.DetalleFacturaId=1;
-        data.DetalleFacturaId =1;
+       
+        
         console.log(data)
         this.toast.success('Producto Agregado ','! Agregado')
       },
