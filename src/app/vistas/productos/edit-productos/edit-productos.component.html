@@ -13,9 +13,8 @@
 
             <div class="mb-3">
                 <label  class="form-label">Categoria </label>
-                <select class="form-select"  formControlName="IdCategoria" aria-placeholder="Seleccione">  
-
-                    <option *ngFor="let categorias of datosCategorias" [value]="categorias.Id">
+                <select class="form-select"  formControlName="CategoryId" aria-placeholder="Seleccione" >  
+                    <option *ngFor="let categorias of datosCategorias" [value]="categorias.Id" >
                         
                         {{categorias.Categoria}}
                         

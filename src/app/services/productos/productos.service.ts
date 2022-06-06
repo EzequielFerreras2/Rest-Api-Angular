@@ -57,7 +57,7 @@ export class ProductosService {
   }
   
   removeProducto(Id: any):Observable<ProductosI>{
-    let direction = this.url +"producto/Id:" +Id;
+    let direction = this.url +"Producto/Id:" +Id;
     return this.http.delete<ProductosI>(direction).pipe(
       catchError( this.handleError)
     );

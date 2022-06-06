@@ -18,14 +18,15 @@ export class EditProductosComponent implements OnInit {
 
 
   datosProductos: ProductosI | undefined;
-  datosCategorias: CategoriasI[]|undefined;
+  datosCategorias: CategoriasI[] | undefined;
 
   editForm= new FormGroup({
 
     Id: new FormControl(''), 
     NombreProducto: new FormControl('',[Validators.required]),
-    IdCategoria: new FormControl('',[Validators.required]),
+    CategoryId: new FormControl('',[Validators.required]),
     Categoria: new FormControl('',[Validators.required]),
+    DetalleFacturaId: new FormControl('',[Validators.required]),
     Cantidad: new FormControl('',[Validators.required]),
     Precio: new FormControl('',[Validators.required])
 
@@ -38,24 +39,34 @@ export class EditProductosComponent implements OnInit {
     
     
     let ProductoId = this.activeroute.snapshot.paramMap.get('id');
-
-    this.apiC.getAllCategoria().subscribe(datac=>{
+    let datosCategoriasId: number;
     
-      this.datosCategorias = datac
-      console.log(datac)
-     }),
-
     this.api.getProductoByid(ProductoId).subscribe( data =>{
        this.datosProductos = data;
       console.log(data)
+
+      this.apiC.getAllCategoria().subscribe(datac=>{
+    
+        this.datosCategorias = datac
+        
+       })
+  
       
+      this.apiC.getCategoriaByid(1).subscribe(
+
+        data =>{
+
+          datosCategoriasId = data.Id;
+        }
+      )
 
        this.editForm.setValue({
          
          'Id': ProductoId,
          'NombreProducto': this.datosProductos.NombreProducto,
-         'IdCategoria': this.datosCategorias,
+         'CategoryId': this.datosProductos.CategoryId,
          'Categoria': this.datosProductos.Categories,
+         'DetalleFacturaId': 1,
          'Cantidad': this.datosProductos.Cantidad,
          'Precio': this.datosProductos.Precio
        });
@@ -116,6 +127,19 @@ export class EditProductosComponent implements OnInit {
     return this.editForm.get('Precio')
   };
 
+
+  prueba(id:number){
+    this.apiC.getCategoriaByid(id).subscribe(
+
+      data =>{
+
+        console.log(data.Id)
+        
+      }
+    )
+
+
+  }
 
 
   exit(){

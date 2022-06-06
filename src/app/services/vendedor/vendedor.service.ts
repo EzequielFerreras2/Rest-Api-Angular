@@ -23,9 +23,9 @@ export class VendedorService {
     );
   }
   
-  getVendedorByid(id: any):Observable<VendedorI>{
+  getVendedorByid(Id: any):Observable<VendedorI>{
   
-    let direction = this.url +"Vendedor/Id:" +id;
+    let direction = this.url +"Vendedor/Id:" +Id;
   
     return this.http.get<VendedorI>( direction).pipe(
       catchError( this.handleError)
@@ -36,16 +36,16 @@ export class VendedorService {
   
   addVendedor(form:VendedorI):Observable<VendedorI>{
     
-    let direction = this.url +"vendedor";
+    let direction = this.url +"Vendedor";
     return this.http.post<VendedorI>(direction,form).pipe(
       catchError( this.handleError)
     );
   
   }
   
-  updateVendedor(id: any, form:VendedorI):Observable<VendedorI>{
+  updateVendedor(Id: any, form:VendedorI):Observable<VendedorI>{
   
-    let direction = this.url +"vendedor/id:" +id;
+    let direction = this.url +"Vendedor/Id:" +Id;
     return this.http.put<VendedorI>(direction, form).pipe(
       catchError( this.handleError)
     )
@@ -53,8 +53,8 @@ export class VendedorService {
     
   }
   
-  removeVendedor(id: any):Observable<VendedorI>{
-    let direction = this.url +"vendedor/id:" +id;
+  removeVendedor(Id: any):Observable<VendedorI>{
+    let direction = this.url +"Vendedor/Id:" +Id;
     return this.http.delete<VendedorI>(direction).pipe(
       catchError( this.handleError)
     );

@@ -20,7 +20,7 @@ export class ApiService {
   
 geAllCliente():Observable<ClienteI[]> {
 
-  let direction = this.url+"cliente";
+  let direction = this.url+"Cliente";
   return this.http.get<ClienteI[]>(direction).pipe(
     catchError( this.handleError)
   );

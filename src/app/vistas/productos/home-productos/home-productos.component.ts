@@ -17,7 +17,7 @@ export class HomeProductosComponent implements OnInit {
   categorias: CategoriasI[]| undefined ;
   
 
-  constructor( private apiProdcucts:ProductosService, private apiCategoria: CategoriasService, private rou:Router) { }
+  constructor( private apiProdcucts:ProductosService, private apiC: CategoriasService, private rou:Router) { }
 
 
   
@@ -29,10 +29,15 @@ export class HomeProductosComponent implements OnInit {
     {
       
       this.productos = data;
+ 
+    }),
+
+    this.apiC.getAllCategoria().subscribe(datac=>{
+    
+      this.categorias = datac
       
-      console.log(data)
-      
-    })
+     })
+
     
 
 
@@ -40,11 +45,6 @@ export class HomeProductosComponent implements OnInit {
   }
 
  
-
-  cateogriaId(id: number)
-  {
-    return id;
-  }
  
   
   updateProducto(Id : Number)
@@ -56,6 +56,9 @@ export class HomeProductosComponent implements OnInit {
   {
     this.rou.navigate(['add-productos'])
   }
+
+
+  
 
 
 exit(){
