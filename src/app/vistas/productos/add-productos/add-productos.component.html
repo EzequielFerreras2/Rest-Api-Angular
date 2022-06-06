@@ -1,1 +1,61 @@
-<p>add-productos works!</p>
+<div class="container col-md-4">
+
+    <h1 class="mt-5">Agregar Producto</h1>
+
+    <form [formGroup]="addForm"  (ngSubmit)="postForm(addForm.value)">
+        <div class="container mt-3">
+
+            <div class=" mt-3 mb-3">
+                <label  class="form-label">Producto</label>
+                <input type="text" class="form-control" formControlName="NombreProducto" required>
+                <span class="badge bg-danger " *ngIf="nomPro && nomPro.invalid && nomPro.touched" >Favor ingrese un Produto</span>
+            </div>
+
+            <div class="mb-3">
+                <label  class="form-label">Categoria </label>
+                <select class="form-select"  formControlName="CategoryId" aria-placeholder="Seleccione" >  
+                    <option *ngFor="let categorias of datosCategorias" [value]="categorias.Id" >
+                        
+                        {{categorias.Categoria}}
+                        
+                    </option>
+
+                  </select> 
+                  <span class="badge bg-danger "  *ngIf="cate && cate.invalid && cate.touched ">
+                    Seleccione una membresia.
+                  </span>
+            </div>
+
+            <div class=" mt-3 mb-3">
+                <label  class="form-label">Cantidad</label>
+                <input type="text" class="form-control" formControlName="Cantidad" required>
+                <span class="badge bg-danger " *ngIf="can && can.invalid && can.touched" >Favor ingrese una cantidad</span>
+            </div>
+
+            <div class=" mt-3 mb-3">
+                <label  class="form-label">Precio</label>
+                <input type="text" class="form-control" formControlName="Precio" required>
+                <span class="badge bg-danger " *ngIf="pre && pre.invalid && pre.touched" >Favor ingrese un Precio</span>
+            </div>
+
+
+
+            <div class="row">
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-success ">Guardar</button>
+                    
+                </div>
+            </div>
+            
+            <div class="row mt-2">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-dark " (click)="exit()">Salir</button>
+                </div>
+            </div>
+            
+            
+        </div>
+
+    </form>
+
+</div>

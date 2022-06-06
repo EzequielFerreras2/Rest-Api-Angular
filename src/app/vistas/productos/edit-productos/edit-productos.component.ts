@@ -39,7 +39,7 @@ export class EditProductosComponent implements OnInit {
     
     
     let ProductoId = this.activeroute.snapshot.paramMap.get('id');
-    let datosCategoriasId: number;
+    
     
     this.api.getProductoByid(ProductoId).subscribe( data =>{
        this.datosProductos = data;
@@ -52,13 +52,7 @@ export class EditProductosComponent implements OnInit {
        })
   
       
-      this.apiC.getCategoriaByid(1).subscribe(
-
-        data =>{
-
-          datosCategoriasId = data.Id;
-        }
-      )
+     
 
        this.editForm.setValue({
          
@@ -127,19 +121,6 @@ export class EditProductosComponent implements OnInit {
     return this.editForm.get('Precio')
   };
 
-
-  prueba(id:number){
-    this.apiC.getCategoriaByid(id).subscribe(
-
-      data =>{
-
-        console.log(data.Id)
-        
-      }
-    )
-
-
-  }
 
 
   exit(){
