@@ -7,7 +7,7 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Producto</th>
-              <th scope="col">Numero Categoria</th>
+              
               <th scope="col">Categoria</th>
               <th scope="col">Cantidad</th>
               <th scope="col">Precio</th>
@@ -17,10 +17,10 @@
             <tr *ngFor="let producto of productos" (click)="updateProducto(producto.Id)">
               <th scope="row">{{producto.Id}}</th>
               <td>{{producto.NombreProducto}}</td>
-              <td >{{producto.CategoryId}}</td>
+              
               <td>{{producto.Categories.Categoria}}</td>
               <td>{{producto.Cantidad}}</td>
-              <td>{{producto.Precio}}</td>
+              <td>{{producto.Precio | currency: 'USD' | lowercase }}</td>
             </tr>
             
           </tbody>

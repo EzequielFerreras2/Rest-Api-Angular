@@ -36,11 +36,7 @@ export class AddProductosComponent implements OnInit {
 
     this.apiC.getAllCategoria().subscribe(datac=>{
     
-      this.datosCategorias = datac
-
-   
-  
-      
+      this.datosCategorias = datac   
      })
 
     

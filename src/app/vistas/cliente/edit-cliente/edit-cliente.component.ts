@@ -26,7 +26,7 @@ export class EditClienteComponent implements OnInit {
 
     id: new FormControl(''), 
     nombreCliente: new FormControl('',[Validators.required]),
-    cedula: new FormControl('',[Validators.required]),
+    cedula: new FormControl('',[Validators.pattern("\d{3}-\d{7}-\d{1}$")]),
     membresia: new FormControl('',[Validators.required])
 
   });
