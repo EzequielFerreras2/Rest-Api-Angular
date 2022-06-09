@@ -26,7 +26,6 @@ export class EditProductosComponent implements OnInit {
     NombreProducto: new FormControl('',[Validators.required]),
     CategoryId: new FormControl('',[Validators.required]),
     Categoria: new FormControl('',[Validators.required]),
-    DetalleFacturaId: new FormControl('',[Validators.required]),
     Cantidad: new FormControl('',[Validators.required]),
     Precio: new FormControl('',[Validators.required])
 
@@ -60,7 +59,6 @@ export class EditProductosComponent implements OnInit {
          'NombreProducto': this.datosProductos.NombreProducto,
          'CategoryId': this.datosProductos.CategoryId,
          'Categoria': this.datosProductos.Categories,
-         'DetalleFacturaId': 1,
          'Cantidad': this.datosProductos.Cantidad,
          'Precio': this.datosProductos.Precio
        });

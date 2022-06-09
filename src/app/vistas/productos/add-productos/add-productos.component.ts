@@ -24,7 +24,6 @@ export class AddProductosComponent implements OnInit {
     NombreProducto: new FormControl('',[Validators.required]),
     CategoryId: new FormControl('',[Validators.required]),
     Categoria: new FormControl('',[Validators.required]),
-    DetalleFacturaId: new FormControl('',[Validators.required]),
     Cantidad: new FormControl('',[Validators.required]),
     Precio: new FormControl('',[Validators.required])
 
@@ -45,7 +44,6 @@ export class AddProductosComponent implements OnInit {
 
   postForm(form: ProductosI )
   {
-    form.DetalleFacturaId=1;
   
       this.api.addProducto(form).subscribe(data =>
       {
