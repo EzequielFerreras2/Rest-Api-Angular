@@ -32,8 +32,11 @@
                 <div class="form-floating">
                     <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                     <label for="floatingTextarea">Comments</label>
-    
                 </div>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary">Agregar</button>
+                    <button type="button" class="btn btn-danger">Eliminar</button>
+                  </div>
             </div>
             
             <hr>
@@ -48,6 +51,7 @@
                     <th scope="col">First</th>
                     <th scope="col">Last</th>
                     <th scope="col">Handle</th>
+                    <th scope="col">Eliminar Producto</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -56,17 +60,20 @@
                     <td>Mark</td>
                     <td>Otto</td>
                     <td>@mdo</td>
+                    <td><button type="button" class="btn btn-danger">Eliminar</button></td>
                   </tr>
                   <tr>
                     <th scope="row">2</th>
                     <td>Jacob</td>
                     <td>Thornton</td>
                     <td>@fat</td>
+                    <td><button type="button" class="btn btn-danger">Eliminar</button></td>
                   </tr>
                   <tr>
                     <th scope="row">3</th>
                     <td colspan="2">Larry the Bird</td>
                     <td>@twitter</td>
+                    <td><button type="button" class="btn btn-danger">Eliminar</button></td>
                   </tr>
                 </tbody>
               </table>
