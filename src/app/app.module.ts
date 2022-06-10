@@ -10,6 +10,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeFacturaComponent } from './vistas/factura/home-factura/home-factura.component';
+import { EditFacturaComponent } from './vistas/factura/edit-factura/edit-factura.component';
+import { AddFacturaComponent } from './vistas/factura/add-factura/add-factura.component';
+import { FacturaComponent } from './services/factura/factura.component';
 
 
 
@@ -18,7 +22,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    routingComponents
+    routingComponents,
+    HomeFacturaComponent,
+    EditFacturaComponent,
+    AddFacturaComponent,
+    FacturaComponent
    
 
   

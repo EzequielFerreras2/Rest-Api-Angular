@@ -16,6 +16,9 @@ import { EditCategoriasComponent } from './vistas/categorias/edit-categorias/edi
 import { HomeProductosComponent } from './vistas/productos/home-productos/home-productos.component';
 import { AddProductosComponent } from './vistas/productos/add-productos/add-productos.component';
 import { EditProductosComponent } from './vistas/productos/edit-productos/edit-productos.component';
+import { HomeFacturaComponent } from './vistas/factura/home-factura/home-factura.component';
+import { EditFacturaComponent } from './vistas/factura/edit-factura/edit-factura.component';
+import { AddFacturaComponent } from './vistas/factura/add-factura/add-factura.component';
 
 
 
@@ -37,7 +40,10 @@ const routes: Routes = [
   {path:'Categoria/:id', component:EditCategoriasComponent},
   {path:'productos', component:HomeProductosComponent},
   {path:'add-productos', component:AddProductosComponent},
-  {path:'productos/:id', component:EditProductosComponent} 
+  {path:'productos/:id', component:EditProductosComponent},
+  {path:'factura', component:HomeFacturaComponent},
+  {path:'add-factura', component:AddFacturaComponent},
+  {path:'factura/:id', component:EditFacturaComponent} 
   
   
 
@@ -67,5 +73,9 @@ export const routingComponents=
   EditCategoriasComponent,
   HomeProductosComponent,
   AddProductosComponent,
-  EditProductosComponent
+  EditProductosComponent,
+  HomeFacturaComponent,
+  EditFacturaComponent,
+  AddFacturaComponent
+  
 ]
