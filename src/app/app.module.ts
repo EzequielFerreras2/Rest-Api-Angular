@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeFacturaComponent } from './vistas/factura/home-factura/home-factura.component';
 import { EditFacturaComponent } from './vistas/factura/edit-factura/edit-factura.component';
 import { AddFacturaComponent } from './vistas/factura/add-factura/add-factura.component';
-import { FacturaComponent } from './services/factura/factura.component';
+
 
 
 
@@ -22,11 +22,7 @@ import { FacturaComponent } from './services/factura/factura.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    routingComponents,
-    HomeFacturaComponent,
-    EditFacturaComponent,
-    AddFacturaComponent,
-    FacturaComponent
+    routingComponents
    
 
   

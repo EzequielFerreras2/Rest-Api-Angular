@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'edit-vendedor',
-  templateUrl: './edit-vendedor.component.html',
+  templateUrl:'./edit-vendedor.component.html',
   styleUrls: ['./edit-vendedor.component.css']
 })
 export class EditVendedorComponent implements OnInit {
