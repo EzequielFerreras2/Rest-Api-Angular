@@ -19,6 +19,8 @@ import { EditProductosComponent } from './vistas/productos/edit-productos/edit-p
 import { HomeFacturaComponent } from './vistas/factura/home-factura/home-factura.component';
 import { EditFacturaComponent } from './vistas/factura/edit-factura/edit-factura.component';
 import { AddFacturaComponent } from './vistas/factura/add-factura/add-factura.component';
+import { FacturaClienteComponent } from './vistas/factura/factura-cliente/factura-cliente.component';
+import { HomeFacturaClienteComponent } from './vistas/factura/home-factura-cliente/home-factura-cliente.component';
 
 
 
@@ -43,7 +45,9 @@ const routes: Routes = [
   {path:'productos/:id', component:EditProductosComponent},
   {path:'factura', component:HomeFacturaComponent},
   {path:'add-factura', component:AddFacturaComponent},
-  {path:'factura/:id', component:EditFacturaComponent} 
+  {path:'factura/:id', component:EditFacturaComponent},
+  {path:'home-factura-cliente', component:HomeFacturaClienteComponent},
+  {path:'facturar-cliente/:id', component:FacturaClienteComponent},  
   
   
 
@@ -61,7 +65,6 @@ export const routingComponents=
   LoginComponent,
   HomeComponent,
   HomeClienteComponent,
-
   ModalLoginComponent,
   AddClienteComponent,
   EditClienteComponent,
@@ -76,6 +79,8 @@ export const routingComponents=
   EditProductosComponent,
   HomeFacturaComponent,
   EditFacturaComponent,
-  AddFacturaComponent
+  AddFacturaComponent,
+  HomeFacturaClienteComponent,
+  FacturaClienteComponent
   
 ]
