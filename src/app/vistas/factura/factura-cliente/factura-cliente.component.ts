@@ -3,8 +3,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ClienteI } from 'src/app/Models/Cliente/cliente.interface';
+import { ProductosI } from 'src/app/Models/Productos/productos.interface';
 import { VendedorI } from 'src/app/Models/Vendedor/vendedor.interface';
 import { ApiService } from 'src/app/services/api.service';
+import { ProductosService } from 'src/app/services/productos/productos.service';
 import { VendedorService } from 'src/app/services/vendedor/vendedor.service';
 
 @Component({
@@ -14,11 +16,12 @@ import { VendedorService } from 'src/app/services/vendedor/vendedor.service';
 })
 export class FacturaClienteComponent implements OnInit {
 
-  constructor(private activeroute:ActivatedRoute, private router: Router, private api:ApiService, private toast:ToastrService, private apiV: VendedorService) { }
+  constructor(private activeroute:ActivatedRoute, private router: Router, private api:ApiService, private toast:ToastrService, private apiV: VendedorService, private apiP:ProductosService) { }
 
   datosCliente!: ClienteI;
   vendedores!: VendedorI[];
   datosVendedor!:VendedorI;
+  productos!: ProductosI[] ;
 
   vendedorForm= new FormGroup({
 
@@ -39,12 +42,21 @@ export class FacturaClienteComponent implements OnInit {
 
     }),
 
+    this.apiP.getAllProductos().subscribe(
+      data =>
+    {
+      
+      this.productos = data;
+ 
+    }),
+
     this.apiV.getAllVendedor().subscribe
     
     (data=>{
 
       this.vendedores = data;
-     },  
+     },
+     
 
      (error) =>{
        console.log(error)

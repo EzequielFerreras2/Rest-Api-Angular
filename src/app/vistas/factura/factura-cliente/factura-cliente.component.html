@@ -45,8 +45,34 @@
           
           
           <div class="  form-floating mt-2">
-              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-              <label for="floatingTextarea">Comment</label>
+ 
+
+            <table class="table  table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Producto</th>
+                  
+                  <th scope="col">Categoria</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">Precio</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let producto of productos">
+                  <th scope="row">{{producto.Id}}</th>
+                  <td>{{producto.NombreProducto}}</td>
+                  
+                  <td>{{producto.Categories.Categoria}}</td>
+                  <td>{{producto.Cantidad}}</td>
+                  <td>{{producto.Precio | currency: 'USD' | lowercase }}</td>
+                </tr>
+                
+              </tbody>
+            </table>
+
+            
+             
           </div>
           <div class=" btn-group mt-2" role="group" aria-label="Basic example">
               <button type="button" class="btn btn-success">Agregar</button>
