@@ -7,7 +7,7 @@ import { HeaderComponent } from './plantilla/header/header.component';
 import { FooterComponent } from './plantilla/footer/footer.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule, NgModel } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -20,7 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    routingComponents,
+    routingComponents
+ 
    
     
    

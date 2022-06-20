@@ -63,8 +63,17 @@ removeCliente(Id: any):Observable<ClienteI>{
 
 }
 
-findCliente(cliente: any):Observable<ClienteI[]>{
-  let direction = this.url +"Cliente/Cliente:" +cliente;
+findClienteByCedula(cliente: any):Observable<ClienteI[]>{
+  let direction = this.url +"Cliente/Cedula:" +cliente;
+  return this.http.get<ClienteI[]>(direction).pipe(
+    catchError( this.handleError)
+  );
+
+}
+
+
+findClienteByName(cliente: any):Observable<ClienteI[]>{
+  let direction = this.url +"Cliente/Nombre:" +cliente;
   return this.http.get<ClienteI[]>(direction).pipe(
     catchError( this.handleError)
   );
