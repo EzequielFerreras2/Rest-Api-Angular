@@ -63,6 +63,14 @@ removeCliente(Id: any):Observable<ClienteI>{
 
 }
 
+findCliente(cliente: any):Observable<ClienteI[]>{
+  let direction = this.url +"Cliente/Cliente:" +cliente;
+  return this.http.get<ClienteI[]>(direction).pipe(
+    catchError( this.handleError)
+  );
+
+}
+
 handleError(error: HttpErrorResponse){
 
   console.log(error)
