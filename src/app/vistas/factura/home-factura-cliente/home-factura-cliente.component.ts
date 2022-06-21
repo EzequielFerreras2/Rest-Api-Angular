@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router,NavigationEnd  } from '@angular/router';
+import { Router} from '@angular/router';
 import { ClienteI } from 'src/app/Models/Cliente/cliente.interface';
 import { ApiService } from 'src/app/services/api.service';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
+
 
 @Component({
   selector: 'home-factura-cliente',
@@ -11,13 +14,17 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class HomeFacturaClienteComponent implements OnInit {
 
+  clientes: ClienteI[] | undefined ;
+  
+  displayedColumns: string[] = ['Id', 'NombreCliente', 'Cedula', 'Membresia'];
+  dataSource!: MatTableDataSource<any> ;
 
   
 
-  constructor( private api:ApiService, private rou:Router) { }
+  constructor( private api:ApiService, private rou:Router,  private paginator: MatPaginator) { }
 
 
-  clientes: ClienteI[] | undefined ;
+  
  
   findForm= new FormGroup({
  
@@ -28,18 +35,23 @@ export class HomeFacturaClienteComponent implements OnInit {
 
 
 
-
   ngOnInit(): void {
 
-   
+    this.dataSource.paginator = this.paginator;
 
     this.api.geAllCliente().subscribe(data =>
     {
-      
       this.clientes = data;
+      let ar = data.map(item =>{ return{$key: item.Id}})
       
+      
+     
+      this.dataSource = new MatTableDataSource(ar)
     })
+
+    
   };
+  
 
 
   findCliente(cliente: string){

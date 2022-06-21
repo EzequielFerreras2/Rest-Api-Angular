@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule, routingComponents} from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './plantilla/header/header.component';
@@ -10,6 +9,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule,FormsModule, NgModel } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -21,12 +22,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent,
     FooterComponent,
     routingComponents
- 
-   
-    
-   
-
-  
   ],
   imports: [
     BrowserModule,
@@ -36,7 +31,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatPaginatorModule
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,7 +2,6 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './vistas/login/login.component';
 import { HomeClienteComponent } from './vistas/cliente/home-cliente/home-cliente.component';
-
 import { ModalLoginComponent } from './vistas/login/modal-login/modal-login.component';
 import { AddClienteComponent } from './vistas/cliente/add-cliente/add-cliente.component';
 import { EditClienteComponent } from './vistas/cliente/edit-cliente/edit-cliente.component';
