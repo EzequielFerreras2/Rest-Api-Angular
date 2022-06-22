@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router} from '@angular/router';
 import { ClienteI } from 'src/app/Models/Cliente/cliente.interface';
 import { ApiService } from 'src/app/services/api.service';
-import {MatPaginator} from '@angular/material/paginator';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
 
 
 
@@ -14,9 +14,11 @@ import {MatPaginator} from '@angular/material/paginator';
 })
 export class HomeFacturaClienteComponent implements OnInit {
 
-  clientes: ClienteI[] | undefined ;
-  clienteLength:any;
- 
+  clientes: ClienteI[] = [] ;
+  pagueSize:number =5;
+  index:number =0;
+  top:number =5;
+  pageSizeOptions = [5, 10, 25, 100];
   
 
   constructor( private api:ApiService, private rou:Router,  ) { }
@@ -41,7 +43,7 @@ export class HomeFacturaClienteComponent implements OnInit {
     {
       this.clientes = data;
      
-      this.clienteLength = this.clientes.length
+      
       
      
      
@@ -50,6 +52,11 @@ export class HomeFacturaClienteComponent implements OnInit {
     
   };
   
+  cambiarPagina(e:PageEvent){
+    console.log(e);
+    this.index = e.pageIndex * e.pageSize;
+    this.top = this.index + e.pageSize
+  }
 
 
   findCliente(cliente: string){
@@ -79,7 +86,6 @@ prueba2(){
 
 
 borrar(){
-
 window.location.reload();
 };
 
