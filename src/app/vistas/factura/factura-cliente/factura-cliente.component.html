@@ -54,12 +54,12 @@
                   <th scope="col">Producto</th>
                   
                   <th scope="col">Categoria</th>
-                  <th scope="col">Cantidad</th>
+                  <th scope="col">Cantidad Existente INV</th>
                   <th scope="col">Precio</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let producto of productos">
+                <tr *ngFor="let producto of productos | slice: index:top">
                   <th scope="row">{{producto.Id}}</th>
                   <td>{{producto.NombreProducto}}</td>
                   
@@ -71,7 +71,12 @@
               </tbody>
             </table>
 
-            
+            <mat-paginator [length]="productos.length"
+            [pageSize]="pagueSize"
+            [pageSizeOptions]="pageSizeOptions"
+            (page)="cambiarPagina($event)"
+            aria-label="Seleccione Pagina">
+            </mat-paginator>
              
           </div>
           

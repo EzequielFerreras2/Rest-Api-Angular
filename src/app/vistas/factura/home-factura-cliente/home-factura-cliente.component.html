@@ -17,33 +17,35 @@
             </div>
         </form>
     </div>
-         
+         <div class="card">
+            <table class="table  table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Cedula</th>
+                  <th scope="col">Membresia</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cliente of clientes | slice: index:top" (click)="facturarCliente(cliente.Id)">
+                  <th scope="row">{{cliente.Id}}</th>
+                  <td>{{cliente.NombreCliente}}</td>
+                  <td>{{cliente.Cedula}}</td>
+                  <td>{{cliente.Membresia}}</td>
+                </tr>
+                
+              </tbody>
+            </table>
+    
+            <mat-paginator [length]="clientes.length"
+            [pageSize]="pagueSize"
+            [pageSizeOptions]="pageSizeOptions"
+            (page)="cambiarPagina($event)"
+            aria-label="Seleccione Pagina">
+            </mat-paginator>
+          </div>
         
-        <table class="table  table-hover">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Cedula</th>
-              <th scope="col">Membresia</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let cliente of clientes | slice: index:top" (click)="facturarCliente(cliente.Id)">
-              <th scope="row">{{cliente.Id}}</th>
-              <td>{{cliente.NombreCliente}}</td>
-              <td>{{cliente.Cedula}}</td>
-              <td>{{cliente.Membresia}}</td>
-            </tr>
-            
-          </tbody>
-        </table>
-
-        <mat-paginator [length]="clientes.length"
-        [pageSize]="pagueSize"
-        [pageSizeOptions]="pageSizeOptions"
-        (page)="cambiarPagina($event)"
-        aria-label="Seleccione Pagina">
-        </mat-paginator>
+        
   </div>
   
