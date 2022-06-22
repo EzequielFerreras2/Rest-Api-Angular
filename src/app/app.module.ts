@@ -34,7 +34,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     BrowserAnimationsModule,
     MatPaginatorModule,
     MatTableModule,
-    MatPaginatorModule
+  
     
     
   ],

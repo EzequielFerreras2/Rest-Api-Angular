@@ -4,7 +4,7 @@ import { Router} from '@angular/router';
 import { ClienteI } from 'src/app/Models/Cliente/cliente.interface';
 import { ApiService } from 'src/app/services/api.service';
 import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+
 
 
 @Component({
@@ -15,13 +15,11 @@ import {MatTableDataSource} from '@angular/material/table';
 export class HomeFacturaClienteComponent implements OnInit {
 
   clientes: ClienteI[] | undefined ;
-  
-  displayedColumns: string[] = ['Id', 'NombreCliente', 'Cedula', 'Membresia'];
-  dataSource!: MatTableDataSource<any> ;
-
+  clienteLength:any;
+ 
   
 
-  constructor( private api:ApiService, private rou:Router,  private paginator: MatPaginator) { }
+  constructor( private api:ApiService, private rou:Router,  ) { }
 
 
   
@@ -37,16 +35,16 @@ export class HomeFacturaClienteComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.dataSource.paginator = this.paginator;
+  
 
     this.api.geAllCliente().subscribe(data =>
     {
       this.clientes = data;
-      let ar = data.map(item =>{ return{$key: item.Id}})
-      
+     
+      this.clienteLength = this.clientes.length
       
      
-      this.dataSource = new MatTableDataSource(ar)
+     
     })
 
     
