@@ -18,13 +18,15 @@ import { DatePipe } from '@angular/common';
 })
 export class FacturaClienteComponent implements OnInit {
 
-  constructor(private activeroute:ActivatedRoute, private router: Router, private api:ApiService, private toast:ToastrService, private apiV: VendedorService, private apiP:ProductosService) { }
+  constructor(private activeroute:ActivatedRoute, private router: Router, private api:ApiService, 
+    private toast:ToastrService, private apiV: VendedorService, private apiP:ProductosService) { }
 
 /* Funcion Para Variable Comunes*/
   datosCliente!: ClienteI  ;
   vendedores: VendedorI[] =[];
   datosVendedor!:VendedorI;
   productos: ProductosI[] =[] ;
+  datosProducto!: ProductosI;
 
 /* Funcion Para Paginado*/
   pagueSize:number =10;
@@ -50,12 +52,24 @@ export class FacturaClienteComponent implements OnInit {
 
   });
 
+    /*producto Form*/
+  productoForm= new FormGroup({
+
+    Id: new FormControl(''), 
+    NombreProducto: new FormControl('',[]),
+    CategoryId: new FormControl('',[]),
+    Categoria: new FormControl('',[]),
+    Cantidad: new FormControl('',[]),
+    Precio: new FormControl('',[])
+
+  });
 
 
   ngOnInit(): void {
 
-    this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy--h:mm:ss a');
+    this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy-//-h:mm:ss a');
 
+/*Fuente dato Cliente*/
     let clienteId = this.activeroute.snapshot.paramMap.get('id');
 
     this.api.GetClienteByid(clienteId).subscribe( data =>{
@@ -63,6 +77,7 @@ export class FacturaClienteComponent implements OnInit {
 
     }),
 
+/*Fuente Dato Pruducto*/
     this.apiP.getAllProductos().subscribe(
       data =>
     {
@@ -70,15 +85,15 @@ export class FacturaClienteComponent implements OnInit {
       this.productos = data;
  
     }),
-
+/*Fuente dato Vendedor*/
     this.apiV.getAllVendedor().subscribe
     
     (data=>{
 
       this.vendedores = data;
      },
-     
 
+/*Manejo Errores Form*/
      (error) =>{
        console.log(error)
          this.toast.warning(`${error}`,'! Error')
@@ -86,13 +101,21 @@ export class FacturaClienteComponent implements OnInit {
      
      
      );
-    
-
-     console.log(this.datosVendedor)
 
   }
 
+  agregarProducto(id:number){
 
+    this.apiP.getProductoByid(id).subscribe(data =>{
+
+      this.datosProducto = data;
+      console.log(data)
+    })
+
+    
+  }
+
+/*Capturar Datos Paginacion Productos*/
   cambiarPagina(e:PageEvent){
     console.log(e);
     this.index = e.pageIndex * e.pageSize;

@@ -72,7 +72,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let producto of productos | slice: index:top">
+                <tr *ngFor="let producto of productos | slice: index:top" (click)="agregarProducto(producto.Id)">
                   <th scope="row">{{producto.Id}}</th>
                   <td>{{producto.NombreProducto}}</td>
                   

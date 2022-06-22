@@ -13,8 +13,8 @@ import { ProductosService } from 'src/app/services/productos/productos.service';
 })
 export class HomeProductosComponent implements OnInit {
 
-  productos: ProductosI[] | undefined ;
-  categorias: CategoriasI[]| undefined ;
+  productos: ProductosI[] =[] ;
+  categorias: CategoriasI[]=[] ;
   
 
   constructor( private apiProdcucts:ProductosService, private apiC: CategoriasService, private rou:Router) { }
