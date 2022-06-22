@@ -29,6 +29,8 @@ export class FacturaClienteComponent implements OnInit {
   top:number =10;
   pageSizeOptions = [10, 25, 100];
 
+  noFactura : number = Math.floor(Math.random()*10000000) ;
+
 
 
   vendedorForm= new FormGroup({
