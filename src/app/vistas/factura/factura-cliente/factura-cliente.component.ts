@@ -9,6 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { ProductosService } from 'src/app/services/productos/productos.service';
 import { VendedorService } from 'src/app/services/vendedor/vendedor.service';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'factura-cliente',
@@ -19,20 +20,28 @@ export class FacturaClienteComponent implements OnInit {
 
   constructor(private activeroute:ActivatedRoute, private router: Router, private api:ApiService, private toast:ToastrService, private apiV: VendedorService, private apiP:ProductosService) { }
 
-  datosCliente!: ClienteI ;
+/* Funcion Para Variable Comunes*/
+  datosCliente!: ClienteI  ;
   vendedores: VendedorI[] =[];
   datosVendedor!:VendedorI;
   productos: ProductosI[] =[] ;
 
+/* Funcion Para Paginado*/
   pagueSize:number =10;
   index:number =0;
   top:number =10;
   pageSizeOptions = [10, 25, 100];
 
+/* Funcion Para Numero de Factura*/
   noFactura : number = Math.floor(Math.random()*10000000) ;
 
+/* Funcion Para fecha*/
+  today: Date = new Date();
+  pipe = new DatePipe('en-US');
+  todayWithPipe:any;
 
 
+/*Vendedor Form*/
   vendedorForm= new FormGroup({
 
     id: new FormControl(''), 
@@ -44,6 +53,8 @@ export class FacturaClienteComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy--h:mm:ss a');
 
     let clienteId = this.activeroute.snapshot.paramMap.get('id');
 
