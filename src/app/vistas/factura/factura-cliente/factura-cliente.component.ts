@@ -29,10 +29,10 @@ export class FacturaClienteComponent implements OnInit {
   datosProducto!: ProductosI;
 
 /* Funcion Para Paginado*/
-  pagueSize:number =10;
+  pagueSize:number =5;
   index:number =0;
-  top:number =10;
-  pageSizeOptions = [10, 25, 100];
+  top:number =5;
+  pageSizeOptions = [5, 25, 100];
 
 /* Funcion Para Numero de Factura*/
   noFactura : number = Math.floor(Math.random()*10000000) ;
@@ -110,6 +110,18 @@ export class FacturaClienteComponent implements OnInit {
 
       this.datosProducto = data;
       console.log(data)
+
+
+
+      this.productoForm.setValue({
+         
+        'Id': data.Id,
+        'NombreProducto': data.NombreProducto,
+        'CategoryId': data.CategoryId,
+        'Categoria': data.Categories,
+        'Cantidad': data.Cantidad,
+        'Precio': data.Precio
+      });
     })
 
     

@@ -1,6 +1,7 @@
 export interface FacturaI{
 
     Id : Number,
+    NoFactura:number,
     ClienteId: Number,
     Cliente:any,
     VendedorId: Number,
