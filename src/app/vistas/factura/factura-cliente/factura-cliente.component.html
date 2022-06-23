@@ -59,7 +59,7 @@
                 <input type="text" class="form-control"  placeholder="Cantidad">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                   <div class="btn-group mt-2 " role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-success">Agregar</button>
+                    <button type="button" class="btn btn-success" (click)="addToCar(productoForm.value)">Agregar</button>
                   </div>
                 </div>
               </div>
@@ -118,31 +118,21 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Handle</th>
-              <th scope="col">Eliminar Producto</th>
+                  <th scope="col">Producto</th>
+                  
+                  <th scope="col">Categoria</th>
+                  <th scope="col">Cantidad Existente INV</th>
+                  <th scope="col">Precio</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-              <td><button type="button" class="btn btn-danger">Eliminar</button></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-              <td><button type="button" class="btn btn-danger">Eliminar</button></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td colspan="2">Larry the Bird</td>
-              <td>@twitter</td>
+            <tr *ngFor="let producto of datosDetalleProducto">
+              <th scope="row">{{producto.Id}}</th>
+                  <td>{{producto.NombreProducto}}</td>
+                  
+                  <td>{{producto.Categories.Categoria}}</td>
+                  <td>{{producto.Cantidad}}</td>
+                  <td>{{producto.Precio | currency: 'USD' | lowercase }}</td>
               <td><button type="button" class="btn btn-danger">Eliminar</button></td>
             </tr>
           </tbody>

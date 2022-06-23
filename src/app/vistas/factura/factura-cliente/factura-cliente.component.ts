@@ -26,7 +26,8 @@ export class FacturaClienteComponent implements OnInit {
   vendedores: VendedorI[] =[];
   datosVendedor!:VendedorI;
   productos: ProductosI[] =[] ;
-  datosProducto!: ProductosI;
+  datosDetalleProducto: ProductosI[] =[];
+
 
 /* Funcion Para Paginado*/
   pagueSize:number =5;
@@ -63,6 +64,21 @@ export class FacturaClienteComponent implements OnInit {
     Precio: new FormControl('',[])
 
   });
+
+
+      /*Detalle Form*/
+    detalleForm= new FormGroup({
+ 
+    Id: new FormControl(''), 
+    FacturaId: new FormControl('',[]),
+    Factura:new FormControl('',[]),
+    ProductosId: new FormControl('',[]),
+    Products: new FormControl('',[]),
+    Cantidad:new FormControl('',[]),
+    Precio: new FormControl('',[]),
+    Totalc: new FormControl('',[]),
+    
+      });
 
 
   ngOnInit(): void {
@@ -108,11 +124,6 @@ export class FacturaClienteComponent implements OnInit {
 
     this.apiP.getProductoByid(id).subscribe(data =>{
 
-      this.datosProducto = data;
-      console.log(data)
-
-
-
       this.productoForm.setValue({
          
         'Id': data.Id,
@@ -126,6 +137,14 @@ export class FacturaClienteComponent implements OnInit {
 
     
   }
+
+addToCar(pro:ProductosI){
+
+  
+  this.datosDetalleProducto.push(pro);
+  console.log(this.datosDetalleProducto)
+}
+
 
 /*Capturar Datos Paginacion Productos*/
   cambiarPagina(e:PageEvent){
