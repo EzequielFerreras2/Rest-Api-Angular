@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { VendedorI } from 'src/app/Models/Vendedor/vendedor.interface';
@@ -17,10 +17,10 @@ export class AddVendedorComponent implements OnInit {
 
   datosVendedor: VendedorI | undefined;
 
-  addForm= new FormGroup({
+  addForm= new UntypedFormGroup({
 
-    nombreVendedor: new FormControl('',[Validators.required]),
-    ventas: new FormControl('',[Validators.required])
+    nombreVendedor: new UntypedFormControl('',[Validators.required]),
+    ventas: new UntypedFormControl('',[Validators.required])
 
   });
 

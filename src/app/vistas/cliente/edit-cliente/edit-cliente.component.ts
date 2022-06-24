@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
-import { FormControl,FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl,UntypedFormGroup, Validators } from '@angular/forms';
 import { ClienteI } from 'src/app/Models/Cliente/cliente.interface';
 import { ApiService } from 'src/app/services/api.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
@@ -22,12 +22,12 @@ export class EditClienteComponent implements OnInit {
 
   datosCliente: ClienteI | undefined;
 
-  editForm= new FormGroup({
+  editForm= new UntypedFormGroup({
 
-    id: new FormControl(''), 
-    nombreCliente: new FormControl('',[Validators.required]),
-    cedula: new FormControl('',[Validators.pattern("\d{3}-\d{7}-\d{1}$")]),
-    membresia: new FormControl('',[Validators.required])
+    id: new UntypedFormControl(''), 
+    nombreCliente: new UntypedFormControl('',[Validators.required]),
+    cedula: new UntypedFormControl('',[Validators.pattern("\d{3}-\d{7}-\d{1}$")]),
+    membresia: new UntypedFormControl('',[Validators.required])
 
   });
 

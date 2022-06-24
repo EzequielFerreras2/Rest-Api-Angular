@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { ProductosI } from 'src/app/Models/Productos/productos.interface';
@@ -19,13 +19,13 @@ export class AddProductosComponent implements OnInit {
   datosProductos: ProductosI | undefined;
   datosCategorias: CategoriasI[] | undefined;
 
-  addForm= new FormGroup({
+  addForm= new UntypedFormGroup({
 
-    NombreProducto: new FormControl('',[Validators.required]),
-    CategoryId: new FormControl('',[Validators.required]),
-    Categoria: new FormControl('',[Validators.required]),
-    Cantidad: new FormControl('',[Validators.required]),
-    Precio: new FormControl('',[Validators.required])
+    NombreProducto: new UntypedFormControl('',[Validators.required]),
+    CategoryId: new UntypedFormControl('',[Validators.required]),
+    Categoria: new UntypedFormControl('',[Validators.required]),
+    Cantidad: new UntypedFormControl('',[Validators.required]),
+    Precio: new UntypedFormControl('',[Validators.required])
 
   });
 

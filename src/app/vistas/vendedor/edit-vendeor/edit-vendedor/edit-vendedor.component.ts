@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
 import { VendedorI } from 'src/app/Models/Vendedor/vendedor.interface';
 import { VendedorService } from 'src/app/services/vendedor/vendedor.service';
@@ -19,11 +19,11 @@ export class EditVendedorComponent implements OnInit {
 
   datosVendedor: VendedorI | undefined;
 
-  editForm= new FormGroup({
+  editForm= new UntypedFormGroup({
 
-    id: new FormControl(''), 
-    nombreVendedor: new FormControl('',[Validators.required]),
-    ventas: new FormControl('',[Validators.required])
+    id: new UntypedFormControl(''), 
+    nombreVendedor: new UntypedFormControl('',[Validators.required]),
+    ventas: new UntypedFormControl('',[Validators.required])
 
   });
 

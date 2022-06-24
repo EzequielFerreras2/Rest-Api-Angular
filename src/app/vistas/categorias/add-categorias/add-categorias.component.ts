@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CategoriasI } from 'src/app/Models/Categorias/categorias.interface';
@@ -17,10 +17,10 @@ export class AddCategoriasComponent implements OnInit {
 
   datosCategoria: CategoriasI | undefined;
 
-  addForm= new FormGroup({
+  addForm= new UntypedFormGroup({
 
     
-    Categoria: new FormControl('',[Validators.required]),
+    Categoria: new UntypedFormControl('',[Validators.required]),
     
 
   });

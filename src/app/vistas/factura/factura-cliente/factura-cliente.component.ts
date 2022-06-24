@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ClienteI } from 'src/app/Models/Cliente/cliente.interface';
@@ -45,38 +45,38 @@ export class FacturaClienteComponent implements OnInit {
 
 
 /*Vendedor Form*/
-  vendedorForm= new FormGroup({
+  vendedorForm= new UntypedFormGroup({
 
-    id: new FormControl(''), 
-    nombreVendedor: new FormControl('',[Validators.required]),
-    ventas: new FormControl('',[Validators.required])
+    id: new UntypedFormControl(''), 
+    nombreVendedor: new UntypedFormControl('',[Validators.required]),
+    ventas: new UntypedFormControl('',[Validators.required])
 
   });
 
     /*producto Form*/
-  productoForm= new FormGroup({
+  productoForm= new UntypedFormGroup({
 
-    Id: new FormControl(''), 
-    NombreProducto: new FormControl('',[]),
-    CategoryId: new FormControl('',[]),
-    Categoria: new FormControl('',[]),
-    Cantidad: new FormControl('',[]),
-    Precio: new FormControl('',[])
+    Id: new UntypedFormControl(''), 
+    NombreProducto: new UntypedFormControl('',[]),
+    CategoryId: new UntypedFormControl('',[]),
+    Categoria: new UntypedFormControl('',[]),
+    Cantidad: new UntypedFormControl('',[]),
+    Precio: new UntypedFormControl('',[])
 
   });
 
 
       /*Detalle Form*/
-    detalleForm= new FormGroup({
+    detalleForm= new UntypedFormGroup({
  
-    Id: new FormControl(''), 
-    FacturaId: new FormControl('',[]),
-    Factura:new FormControl('',[]),
-    ProductosId: new FormControl('',[]),
-    Products: new FormControl('',[]),
-    Cantidad:new FormControl('',[]),
-    Precio: new FormControl('',[]),
-    Totalc: new FormControl('',[]),
+    Id: new UntypedFormControl(''), 
+    FacturaId: new UntypedFormControl('',[]),
+    Factura:new UntypedFormControl('',[]),
+    ProductosId: new UntypedFormControl('',[]),
+    Products: new UntypedFormControl('',[]),
+    Cantidad:new UntypedFormControl('',[]),
+    Precio: new UntypedFormControl('',[]),
+    Totalc: new UntypedFormControl('',[]),
     
       });
 

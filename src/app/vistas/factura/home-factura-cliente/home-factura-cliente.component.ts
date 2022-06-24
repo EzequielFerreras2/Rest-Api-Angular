@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router} from '@angular/router';
 import { ClienteI } from 'src/app/Models/Cliente/cliente.interface';
 import { ApiService } from 'src/app/services/api.service';
@@ -26,9 +26,9 @@ export class HomeFacturaClienteComponent implements OnInit {
 
   
  
-  findForm= new FormGroup({
+  findForm= new UntypedFormGroup({
  
-    nombreCliente: new FormControl('',[Validators.required])
+    nombreCliente: new UntypedFormControl('',[Validators.required])
   
 
   });
