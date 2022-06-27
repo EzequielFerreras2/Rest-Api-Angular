@@ -45,25 +45,25 @@
             <hr>
            
             <div class="row mt-3">
-
+              <form [formGroup]="productoForm">
               <div class="col-md-4">
-                <form [formGroup]="productoForm">
+                
                   <label  class="form-label">Producto:</label>
                   <input type="text" class="form-control" formControlName="NombreProducto" placeholder="Producto">
-                  </form>
+                  
               </div>
               
 
               <div class="col-md-4">
                 <label class="form-label">Cantidad:</label>
-                <input type="text" class="form-control"  placeholder="Cantidad">
+                <input type="text" class="form-control"  placeholder="Cantidad" formControlName="Cantidad">
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                   <div class="btn-group mt-2 " role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-success" (click)="addToCar(productoForm.value)">Agregar</button>
                   </div>
                 </div>
               </div>
-             
+            </form>
               
             
             </div>
@@ -77,7 +77,7 @@
             <table class="table  table-hover">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                 
                   <th scope="col">Producto</th>
                   
                   <th scope="col">Categoria</th>
@@ -87,9 +87,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let producto of productos | slice: index:top" (click)="agregarProducto(producto.Id)">
-                  <th scope="row">{{producto.Id}}</th>
                   <td>{{producto.NombreProducto}}</td>
-                  
                   <td>{{producto.Categories.Categoria}}</td>
                   <td>{{producto.Cantidad}}</td>
                   <td>{{producto.Precio | currency: 'USD' | lowercase }}</td>
@@ -120,17 +118,15 @@
               <th scope="col">#</th>
                   <th scope="col">Producto</th>
                   
-                  <th scope="col">Categoria</th>
-                  <th scope="col">Cantidad Existente INV</th>
+                  <th scope="col">Cantidad </th>
                   <th scope="col">Precio</th>
+                  <th scope="col">Sub-Total</th> 
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let producto of datosDetalleProducto">
               <th scope="row">{{producto.Id}}</th>
-                  <td>{{producto.NombreProducto}}</td>
-                  
-                  <td>{{producto.Categories.Categoria}}</td>
+                  <td>{{producto.NombreProducto}}</td>   
                   <td>{{producto.Cantidad}}</td>
                   <td>{{producto.Precio | currency: 'USD' | lowercase }}</td>
               <td><button type="button" class="btn btn-danger">Eliminar</button></td>

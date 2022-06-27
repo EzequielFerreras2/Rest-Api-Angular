@@ -10,6 +10,10 @@ import { ProductosService } from 'src/app/services/productos/productos.service';
 import { VendedorService } from 'src/app/services/vendedor/vendedor.service';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import { DatePipe } from '@angular/common';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { data } from 'jquery';
+import { FacturaService } from 'src/app/services/factura/factura.service';
+
 
 @Component({
   selector: 'factura-cliente',
@@ -19,15 +23,19 @@ import { DatePipe } from '@angular/common';
 export class FacturaClienteComponent implements OnInit {
 
   constructor(private activeroute:ActivatedRoute, private router: Router, private api:ApiService, 
-    private toast:ToastrService, private apiV: VendedorService, private apiP:ProductosService) { }
+    private toast:ToastrService, private apiV: VendedorService, private apiP:ProductosService, private apiF:FacturaService) { }
 
 /* Funcion Para Variable Comunes*/
   datosCliente!: ClienteI  ;
   vendedores: VendedorI[] =[];
   datosVendedor!:VendedorI;
   productos: ProductosI[] =[] ;
-  datosDetalleProducto: ProductosI[] =[];
+  dataPro: ProductosI | undefined;
 
+
+
+  datosDetalleProducto: ProductosI[] =[];
+ 
 
 /* Funcion Para Paginado*/
   pagueSize:number =5;
@@ -82,6 +90,8 @@ export class FacturaClienteComponent implements OnInit {
 
 
   ngOnInit(): void {
+    
+    this.apiF.items.subscribe( data => this.datosDetalleProducto = data)
 
     this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy-//-h:mm:ss a');
 
@@ -123,15 +133,17 @@ export class FacturaClienteComponent implements OnInit {
   agregarProducto(id:number){
 
     this.apiP.getProductoByid(id).subscribe(data =>{
+      
+      this.dataPro = data;
 
       this.productoForm.setValue({
          
-        'Id': data.Id,
-        'NombreProducto': data.NombreProducto,
-        'CategoryId': data.CategoryId,
-        'Categoria': data.Categories,
-        'Cantidad': data.Cantidad,
-        'Precio': data.Precio
+        'Id': this.dataPro.Id,
+        'NombreProducto': this.dataPro.NombreProducto,
+        'CategoryId': this.dataPro.CategoryId,
+        'Categoria': this.dataPro.Categories,
+        'Cantidad': this.productoForm.value.Cantidad,
+        'Precio': this.dataPro.Precio
       });
     })
 
@@ -139,10 +151,8 @@ export class FacturaClienteComponent implements OnInit {
   }
 
 addToCar(pro:ProductosI){
-
-  
-  this.datosDetalleProducto.push(pro);
-  console.log(this.datosDetalleProducto)
+  this.apiF.items.subscribe( data => this.datosDetalleProducto = data)
+  this.apiF.addToCar(pro);
 }
 
 

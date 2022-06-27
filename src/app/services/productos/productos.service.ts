@@ -28,8 +28,8 @@ export class ProductosService {
 
   getProductoByid(Id: any):Observable<ProductosI>{
   
-    let direction = this.url +"Producto/Id:" +Id;
-  
+    let direction = this.url +"Producto/Id:"+Id;
+     console.log(direction)
     return this.http.get<ProductosI>( direction).pipe(
       catchError( this.handleError)
     );
