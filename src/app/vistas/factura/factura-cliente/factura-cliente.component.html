@@ -138,10 +138,12 @@
   </div>
   <div class="row">
       <div class="col-md-6">
-          <p>Puntos Generados:</p>
+          <p>Puntos Generados:<b>{{puntos()}}</b></p>
       </div>
       <div class="col-md-6">
-          <h3>Total:</h3>
+        <form [formGroup]="productoForm">
+          <h3>Total: <b>{{total() | currency: 'USD' | lowercase}}</b> </h3>
+        </form>
       </div>
       
   </div>

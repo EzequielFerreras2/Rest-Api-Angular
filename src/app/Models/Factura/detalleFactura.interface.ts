@@ -7,5 +7,6 @@ export interface DetalleFacturaI{
     Products: Number,
     Cantidad:Number,
     Precio: Number,
+    SubTotal:Number,
     Totalc: Number
 }

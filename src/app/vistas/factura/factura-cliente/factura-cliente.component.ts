@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, DetachedRouteHandle, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ClienteI } from 'src/app/Models/Cliente/cliente.interface';
 import { ProductosI } from 'src/app/Models/Productos/productos.interface';
@@ -10,9 +10,9 @@ import { ProductosService } from 'src/app/services/productos/productos.service';
 import { VendedorService } from 'src/app/services/vendedor/vendedor.service';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import { DatePipe } from '@angular/common';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { data } from 'jquery';
 import { FacturaService } from 'src/app/services/factura/factura.service';
+import { DetalleFacturaI } from 'src/app/Models/Factura/detalleFactura.interface';
+
 
 
 @Component({
@@ -31,6 +31,7 @@ export class FacturaClienteComponent implements OnInit {
   datosVendedor!:VendedorI;
   productos: ProductosI[] =[] ;
   dataPro: ProductosI | undefined;
+  dataDetalleFactura!: DetalleFacturaI;
 
 
 
@@ -69,6 +70,7 @@ export class FacturaClienteComponent implements OnInit {
     CategoryId: new UntypedFormControl('',[]),
     Categoria: new UntypedFormControl('',[]),
     Cantidad: new UntypedFormControl('',[]),
+
     Precio: new UntypedFormControl('',[])
     
 
@@ -86,6 +88,7 @@ export class FacturaClienteComponent implements OnInit {
     Products: new UntypedFormControl('',[]),
     Cantidad:new UntypedFormControl('',[]),
     Precio: new UntypedFormControl('',[]),
+    SubTotal: new UntypedFormControl('',[]),
     Totalc: new UntypedFormControl('',[]),
     
       });
@@ -130,6 +133,9 @@ export class FacturaClienteComponent implements OnInit {
      
      );
 
+
+    
+
   }
 
   agregarProducto(id:number){
@@ -146,12 +152,34 @@ export class FacturaClienteComponent implements OnInit {
         'CategoryId': this.dataPro.CategoryId,
         'Categoria': this.dataPro.Categories,
         'Cantidad': this.productoForm.value.Cantidad,
-        'Precio': this.dataPro.Precio
+        'Precio': this.dataPro.Precio,
+        
       });
+
     })
 
     
   }
+
+
+  total(){
+    let sum =0;
+    this.datosDetalleProducto.forEach(data =>{
+
+      sum+= data.Precio * this.productoForm.value.Cantidad
+    });
+      
+    return sum;
+  }
+
+  puntos(){
+    let puntos =0
+
+    puntos = this.total() /500;
+
+    return  Math.floor(puntos);
+  }
+
 
 addToCar(pro:ProductosI){
   this.apiF.items.subscribe( data => this.datosDetalleProducto = data)
