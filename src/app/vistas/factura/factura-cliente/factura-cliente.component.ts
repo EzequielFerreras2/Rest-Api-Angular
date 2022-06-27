@@ -70,6 +70,8 @@ export class FacturaClienteComponent implements OnInit {
     Categoria: new UntypedFormControl('',[]),
     Cantidad: new UntypedFormControl('',[]),
     Precio: new UntypedFormControl('',[])
+    
+
 
   });
 
@@ -136,6 +138,7 @@ export class FacturaClienteComponent implements OnInit {
       
       this.dataPro = data;
 
+
       this.productoForm.setValue({
          
         'Id': this.dataPro.Id,
@@ -154,6 +157,12 @@ addToCar(pro:ProductosI){
   this.apiF.items.subscribe( data => this.datosDetalleProducto = data)
   this.apiF.addToCar(pro);
 }
+
+deleteItemCar( id:number ){
+
+  this.apiF.deleteItemCar(id)
+  
+};
 
 
 /*Capturar Datos Paginacion Productos*/

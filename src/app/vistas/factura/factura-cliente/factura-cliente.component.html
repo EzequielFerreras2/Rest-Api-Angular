@@ -121,6 +121,7 @@
                   <th scope="col">Cantidad </th>
                   <th scope="col">Precio</th>
                   <th scope="col">Sub-Total</th> 
+                  <th scope="col">*****</th> 
             </tr>
           </thead>
           <tbody>
@@ -128,8 +129,9 @@
               <th scope="row">{{producto.Id}}</th>
                   <td>{{producto.NombreProducto}}</td>   
                   <td>{{producto.Cantidad}}</td>
-                  <td>{{producto.Precio | currency: 'USD' | lowercase }}</td>
-              <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+                  <td>{{producto.Precio | currency: 'USD' | lowercase   }}</td>
+                  <td>{{producto.Precio * this.productoForm.value.Cantidad | currency: 'USD' | lowercase  }}</td>
+              <td><button type="button" class="btn btn-danger" (click)="deleteItemCar(producto.Id)">Eliminar</button></td>
             </tr>
           </tbody>
         </table>

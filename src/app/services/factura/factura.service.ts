@@ -17,9 +17,31 @@ export class FacturaService {
 
   addToCar(pro:ProductosI){
     
+    let index = this.datosDetalleProducto.findIndex(item => item.Id === pro.Id );
+
+    if( index === -1 )
       this.datosDetalleProducto.push(pro);
-   
-    
-    console.log(this.datosDetalleProducto)
+    else
+      this.datosDetalleProducto.slice(index,1);
+
   }
+
+  deleteItemCar( id:number ){
+
+    let index = this.datosDetalleProducto.findIndex(item => item.Id === id);
+
+    if(index > -1)
+    {
+     var a = this.datosDetalleProducto.slice(index,1)
+     this.items.subscribe( data =>  this.datosDetalleProducto= data.slice(index,1))
+      console.log("indice: " + index)
+
+      console.log(this.datosDetalleProducto)
+      
+    }
+
+  }
+
+
+
 }
