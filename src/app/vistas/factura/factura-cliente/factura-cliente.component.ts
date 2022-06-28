@@ -161,7 +161,7 @@ export class FacturaClienteComponent implements OnInit {
     
   }
 
-
+/**/
   total(){
     let sum =0;
     this.datosDetalleProducto.forEach(data =>{
@@ -189,6 +189,20 @@ addToCar(pro:ProductosI){
 deleteItemCar( id:number ){
 
   this.apiF.deleteItemCar(id)
+
+  this.apiF.items.subscribe( data => this.datosDetalleProducto = data)
+
+
+  // let index = this.datosDetalleProducto.findIndex(item => item.Id === id);
+
+  //   if(index > -1)
+  //   {
+  //     var a = this.datosDetalleProducto.filter((item)=>item.Id !== id)  
+
+     
+  //     this.datosDetalleProducto = a; 
+      
+  //   }
   
 };
 
