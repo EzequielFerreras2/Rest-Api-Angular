@@ -21,29 +21,13 @@ export class FacturaService {
 
     if( index === -1 ){
       this.datosDetalleProducto.push(pro);
-      console.log(this.datosDetalleProducto)
+      
     }
     else
       this.datosDetalleProducto.slice(index,1);
 
   }
 
-  deleteItemCar( id:number ){
-
-    let index = this.datosDetalleProducto.findIndex(item => item.Id === id);
-
-    if(index > -1)
-    {
-     var a = this.datosDetalleProducto.filter((item)=>item.Id !== id)
-     
-      this.datosDetalleProducto = a;
-      console.log(this.datosDetalleProducto)
-
-      this.items.subscribe( data => this.datosDetalleProducto = a)
-      
-    }
-
-  }
 
 
 

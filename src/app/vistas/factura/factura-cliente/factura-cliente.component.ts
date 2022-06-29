@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵɵtrustConstantResourceUrl } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, DetachedRouteHandle, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -187,22 +187,17 @@ addToCar(pro:ProductosI){
 }
 
 deleteItemCar( id:number ){
+  let index = this.datosDetalleProducto.findIndex(item => item.Id === id);
 
-  this.apiF.deleteItemCar(id)
+    if(index > -1)
+    {
+      var a = this.datosDetalleProducto.filter((item)=>item.Id !== id)  
 
-  this.apiF.items.subscribe( data => this.datosDetalleProducto = data)
-
-
-  // let index = this.datosDetalleProducto.findIndex(item => item.Id === id);
-
-  //   if(index > -1)
-  //   {
-  //     var a = this.datosDetalleProducto.filter((item)=>item.Id !== id)  
-
-     
-  //     this.datosDetalleProducto = a; 
-      
-  //   }
+      this.datosDetalleProducto = a; 
+      this.datosDetalleProducto.forEach(data =>{
+        this.apiF.addToCar(data)
+      });
+    }
   
 };
 

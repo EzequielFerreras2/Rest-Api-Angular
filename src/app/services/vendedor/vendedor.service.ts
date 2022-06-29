@@ -65,7 +65,7 @@ export class VendedorService {
 handleError(error: HttpErrorResponse){
 
   console.log(error)
-   return throwError(error.message || error.error.title)
+   return throwError( error.error.title  ||error.message )
 
 }
 
