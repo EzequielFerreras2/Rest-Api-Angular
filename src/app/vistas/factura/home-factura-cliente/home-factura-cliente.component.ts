@@ -24,13 +24,8 @@ export class HomeFacturaClienteComponent implements OnInit {
   constructor( private api:ApiService, private rou:Router,  ) { }
 
 
-  
- 
   findForm= new UntypedFormGroup({
- 
     nombreCliente: new UntypedFormControl('',[Validators.required])
-  
-
   });
 
 
@@ -42,11 +37,7 @@ export class HomeFacturaClienteComponent implements OnInit {
     this.api.geAllCliente().subscribe(data =>
     {
       this.clientes = data;
-     
-      
-      
-     
-     
+
     })
 
     
@@ -59,14 +50,14 @@ export class HomeFacturaClienteComponent implements OnInit {
   }
 
 
-  findCliente(cliente: string){
-
+findCliente(cliente: string)
+{
     this.api.findClienteByCedula(cliente).subscribe(data =>
       {
         this.clientes = data;
       })
 
-  };
+};
 
 
 facturarCliente(id : Number)
@@ -74,28 +65,11 @@ facturarCliente(id : Number)
     this.rou.navigate(['facturar-cliente',id])
 };
 
-prueba(){
-
-  console.log(1)
-}
-
-prueba2(){
-
-  console.log(2)
-}
-
-
 borrar(){
 window.location.reload();
 };
 
-
-
-
-
-
 exit(){
-
   this.rou.navigate(['factura'])
 };
 

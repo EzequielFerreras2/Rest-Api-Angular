@@ -26,17 +26,13 @@ export class FacturaClienteComponent implements OnInit {
     private toast:ToastrService, private apiV: VendedorService, private apiP:ProductosService, private apiF:FacturaService) { }
 
 /* Funcion Para Variable Comunes*/
-  datosCliente!: ClienteI  ;
+  datosCliente!: ClienteI;
   vendedores: VendedorI[] =[];
   datosVendedor!:VendedorI;
-  productos: ProductosI[] =[] ;
+  productos: ProductosI[] =[];
   dataPro: ProductosI | undefined;
   dataDetalleFactura!: DetalleFacturaI;
-
-
-
   datosDetalleProducto: ProductosI[] =[];
- 
 
 /* Funcion Para Paginado*/
   pagueSize:number =5;
@@ -55,30 +51,25 @@ export class FacturaClienteComponent implements OnInit {
 
 /*Vendedor Form*/
   vendedorForm= new UntypedFormGroup({
-
     id: new UntypedFormControl(''), 
     nombreVendedor: new UntypedFormControl('',[Validators.required]),
     ventas: new UntypedFormControl('',[Validators.required])
 
   });
 
-    /*producto Form*/
+  /*producto Form*/
   productoForm= new UntypedFormGroup({
-
     Id: new UntypedFormControl(''), 
     NombreProducto: new UntypedFormControl('',[]),
     CategoryId: new UntypedFormControl('',[]),
     Categoria: new UntypedFormControl('',[]),
-    Cantidad: new UntypedFormControl('',[]),
-
+    Cantidad: new UntypedFormControl('',[Validators.required]),
     Precio: new UntypedFormControl('',[])
-    
-
-
   });
 
 
-      /*Detalle Form*/
+      
+    /*Detalle Form*/
     detalleForm= new UntypedFormGroup({
  
     Id: new UntypedFormControl(''), 
@@ -95,58 +86,46 @@ export class FacturaClienteComponent implements OnInit {
 
 
   ngOnInit(): void {
-    
-
 
     this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy-//-h:mm:ss a');
 
-/*Fuente dato Cliente*/
+    /*Fuente dato Cliente*/
     let clienteId = this.activeroute.snapshot.paramMap.get('id');
-
-    this.api.GetClienteByid(clienteId).subscribe( data =>{
-       this.datosCliente = data;
-
-    }),
-
-/*Fuente Dato Pruducto*/
-    this.apiP.getAllProductos().subscribe(
-      data =>
+    this.api.GetClienteByid(clienteId).subscribe( data =>
     {
-      
-      this.productos = data;
- 
+      this.datosCliente = data;
     }),
-/*Fuente dato Vendedor*/
-    this.apiV.getAllVendedor().subscribe
-    
-    (data=>{
 
+    /*Fuente Dato Pruducto*/
+    this.apiP.getAllProductos().subscribe(data =>
+    {
+      this.productos = data;
+    }),
+
+    /*Fuente dato Vendedor*/
+    this.apiV.getAllVendedor().subscribe(data=>
+    {
       this.vendedores = data;
-     },
+    },
+    (error) =>
+    {
+      console.log(error)
+      this.toast.warning(`${error}`,'! Error')
+    });
+  };
 
-/*Manejo Errores Form*/
-     (error) =>{
-       console.log(error)
-         this.toast.warning(`${error}`,'! Error')
-     }
-     
-     
-     );
+  findCliente(id:number)
+  {
+      this.apiP.getProductoByid
+  };
 
-
-    
-
-  }
-
-  agregarProducto(id:number){
-
-    this.apiP.getProductoByid(id).subscribe(data =>{
-      
+  agregarProducto(id:number)
+  {
+    this.apiP.getProductoByid(id).subscribe(data =>
+    {
       this.dataPro = data;
 
-
       this.productoForm.setValue({
-         
         'Id': this.dataPro.Id,
         'NombreProducto': this.dataPro.NombreProducto,
         'CategoryId': this.dataPro.CategoryId,
@@ -156,58 +135,71 @@ export class FacturaClienteComponent implements OnInit {
         
       });
 
-    })
+    })  
+  };
 
-    
-  }
-
-/**/
-  total(){
+/*Calcular Total*/
+  total()
+  {
     let sum =0;
     this.datosDetalleProducto.forEach(data =>{
 
       sum+= data.Precio * this.productoForm.value.Cantidad
-    });
-      
+    }); 
     return sum;
-  }
+  };
 
-  puntos(){
+  /*Calcular Puntos*/
+  puntos()
+  {
     let puntos =0
-
     puntos = this.total() /500;
-
     return  Math.floor(puntos);
-  }
+  };
 
-
+/* Agregar al Carro de Compras*/
 addToCar(pro:ProductosI){
 
-  let index = this.datosDetalleProducto.findIndex(item => item.Id === pro.Id );
+  if(this.productoForm.value.Cantidad !== "")
+  {
+    let index = this.datosDetalleProducto.findIndex(item => item.Id === pro.Id );
 
-  if( index === -1 ){
-    this.datosDetalleProducto.push(pro);
-    console.log(this.datosDetalleProducto)
+    if( index === -1 )
+    {
+      this.datosDetalleProducto.push(pro);
+    }
+    else
+      this.datosDetalleProducto.slice(index,1);
+
   }
+  
   else
-    this.datosDetalleProducto.slice(index,1);
+  {
+    this.toast.warning('El campo Cantidad Esta Vacio','! Error')
+  };
 
-}
+};
 
-deleteItemCar( id:number ){
-  let index = this.datosDetalleProducto.findIndex(item => item.Id === id);
-
+/*Eliminar del carro de Compras */
+deleteItemCar( id:number )
+{
+    let index = this.datosDetalleProducto.findIndex(item => item.Id === id);
     if(index > -1)
     {
       var a = this.datosDetalleProducto.filter((item)=>item.Id !== id)  
-      this.datosDetalleProducto = a; 
+      this.datosDetalleProducto = a;
+      this.toast.warning('Producto Eliminado','! !!!!!!!!!')
     }
-  
+    else
+    {
+      this.toast.warning('No hay Productos Disponibles','! Error')
+    }
 };
 
 
 /*Capturar Datos Paginacion Productos*/
-  cambiarPagina(e:PageEvent){
+  cambiarPagina(e:PageEvent)
+  {
     console.log(e);
     this.index = e.pageIndex * e.pageSize;
     this.top = this.index + e.pageSize

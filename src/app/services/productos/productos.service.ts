@@ -29,11 +29,29 @@ export class ProductosService {
   getProductoByid(Id: any):Observable<ProductosI>{
   
     let direction = this.url +"Producto/Id:"+Id;
-     console.log(direction)
     return this.http.get<ProductosI>( direction).pipe(
       catchError( this.handleError)
     );
+
+   
   
+  }
+
+
+  getProductoByName(Name: any):Observable<ProductosI>{
+  
+    let direction = this.url +"Producto/Name:"+Name;
+    return this.http.get<ProductosI>( direction).pipe(
+      catchError( this.handleError)
+    );
+  }
+  
+  getProductoByCategory(Categorie: any):Observable<ProductosI>{
+  
+    let direction = this.url +"Producto/Category:"+Categorie;
+    return this.http.get<ProductosI>( direction).pipe(
+      catchError( this.handleError)
+    );
   }
   
   
