@@ -96,7 +96,7 @@ export class FacturaClienteComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.apiF.items.subscribe( data => this.datosDetalleProducto = data)
+
 
     this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy-//-h:mm:ss a');
 
@@ -182,8 +182,16 @@ export class FacturaClienteComponent implements OnInit {
 
 
 addToCar(pro:ProductosI){
-  this.apiF.items.subscribe( data => this.datosDetalleProducto = data)
-  this.apiF.addToCar(pro);
+
+  let index = this.datosDetalleProducto.findIndex(item => item.Id === pro.Id );
+
+  if( index === -1 ){
+    this.datosDetalleProducto.push(pro);
+    console.log(this.datosDetalleProducto)
+  }
+  else
+    this.datosDetalleProducto.slice(index,1);
+
 }
 
 deleteItemCar( id:number ){
@@ -192,11 +200,7 @@ deleteItemCar( id:number ){
     if(index > -1)
     {
       var a = this.datosDetalleProducto.filter((item)=>item.Id !== id)  
-
       this.datosDetalleProducto = a; 
-      this.datosDetalleProducto.forEach(data =>{
-        this.apiF.addToCar(data)
-      });
     }
   
 };
