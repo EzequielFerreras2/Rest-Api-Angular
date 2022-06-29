@@ -39,7 +39,6 @@ export class ProductosService {
 
 
   getProductoByName(Name: any):Observable<ProductosI>{
-  
     let direction = this.url +"Producto/Name:"+Name;
     return this.http.get<ProductosI>( direction).pipe(
       catchError( this.handleError)
@@ -47,7 +46,6 @@ export class ProductosService {
   }
   
   getProductoByCategory(Categorie: any):Observable<ProductosI>{
-  
     let direction = this.url +"Producto/Category:"+Categorie;
     return this.http.get<ProductosI>( direction).pipe(
       catchError( this.handleError)

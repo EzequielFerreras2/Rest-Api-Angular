@@ -11,7 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -34,6 +34,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     BrowserAnimationsModule,
     MatPaginatorModule,
     MatTableModule,
+    MatTabsModule
   
     
     
