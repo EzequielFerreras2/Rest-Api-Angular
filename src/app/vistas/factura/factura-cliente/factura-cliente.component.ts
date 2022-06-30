@@ -103,6 +103,7 @@ export class FacturaClienteComponent implements OnInit {
 
   ngOnInit(): void {
 
+    /*Funcion de la Fecha */
     this.todayWithPipe = this.pipe.transform(Date.now(), 'dd/MM/yyyy-//-h:mm:ss a');
 
     /*Fuente dato Cliente*/
@@ -118,7 +119,7 @@ export class FacturaClienteComponent implements OnInit {
         'cedula': this.datosCliente.Cedula,
         'membresia': this.datosCliente.Membresia
       });
-      
+
     },
     (error) =>
     {
