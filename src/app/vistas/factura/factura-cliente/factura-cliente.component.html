@@ -8,15 +8,40 @@
   
   <div class="row">
       <hr>
-     
         <div class="col-md-6">
-          <h1 class="card-title">Cliente: </h1>
-          <p >Numero Cliente: <b>{{datosCliente.Id}}</b></p>
-          <p>Nombre: <b>{{datosCliente.NombreCliente}}</b></p>
-          <p>Cedula: <b>{{datosCliente.Cedula}}</b> </p>
-          <p>Membresia: <b>{{datosCliente.Membresia}}</b></p>
+
+          <form [formGroup]="clienteForm">
+            <div class="mb-3 row">
+              <label class="col-sm-4 col-form-label" for="labelId">Numero Cliente:</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" formControlName="id" id="labelId" readonly>
+              </div>
+            </div>
+
+          <div class="mb-3 row">
+            <label class="col-sm-4 col-form-label">Nombre Cliente:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control-plaintext"    formControlName="nombreCliente" readonly>
+            </div>
+          </div>       
+
+          <div class="mb-3 row">
+            <label class="col-sm-4 col-form-label">Cedula:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control-plaintext"    formControlName="cedula" readonly>
+            </div>
+          </div>
           
-      </div>
+          <div class="mb-3 row">
+            <label class="col-sm-4 col-form-label">Membresia:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control-plaintext"    formControlName="membresia" readonly>
+            </div>
+          </div>
+          
+          </form>
+          
+        </div>
    
       
       <div class="col-md-6 mt-4">

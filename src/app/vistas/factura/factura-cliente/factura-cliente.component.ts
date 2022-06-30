@@ -54,7 +54,7 @@ export class FacturaClienteComponent implements OnInit {
 
 
 /*Vendedor Form*/
-  vendedorForm= new UntypedFormGroup({
+    vendedorForm= new UntypedFormGroup({
     id: new UntypedFormControl(''), 
     nombreVendedor: new UntypedFormControl('',[Validators.required]),
     ventas: new UntypedFormControl('',[Validators.required])
@@ -71,14 +71,12 @@ export class FacturaClienteComponent implements OnInit {
     Precio: new UntypedFormControl('',[])
   });
 
+/*Formularo Busqueda producto */
+    findProductoForm= new UntypedFormGroup({
+      Find: new UntypedFormControl('',[Validators.required]),
+      Categories: new UntypedFormControl('',[Validators.required])
+      });
 
-  findProductoForm= new UntypedFormGroup({
-    Find: new UntypedFormControl('',[Validators.required]),
-    Categories: new UntypedFormControl('',[Validators.required])
-  });
-
-
-      
     /*Detalle Form*/
     detalleForm= new UntypedFormGroup({
  
@@ -94,6 +92,14 @@ export class FacturaClienteComponent implements OnInit {
     
       });
 
+    clienteForm= new UntypedFormGroup({
+
+        id: new UntypedFormControl(''), 
+        nombreCliente: new UntypedFormControl('',[Validators.required]),
+        cedula: new UntypedFormControl('',[Validators.pattern("\d{3}-\d{7}-\d{1}$")]),
+        membresia: new UntypedFormControl('',[Validators.required])
+    
+      });
 
   ngOnInit(): void {
 
@@ -104,6 +110,15 @@ export class FacturaClienteComponent implements OnInit {
     this.api.GetClienteByid(clienteId).subscribe( data =>
     {
       this.datosCliente = data;
+
+      this.clienteForm.setValue({
+         
+        'id': clienteId,
+        'nombreCliente': this.datosCliente.NombreCliente,
+        'cedula': this.datosCliente.Cedula,
+        'membresia': this.datosCliente.Membresia
+      });
+      
     },
     (error) =>
     {
@@ -235,19 +250,29 @@ deleteItemCar( id:number )
 };
 
 findProductByName(Name:string){
-  console.log(Name)
-  this.apiP.getProductoByName(Name).subscribe(data =>{
 
-    console.log(Name)
-    this.productos = data;
-  
-  },
-  (error) =>
-  {
-    console.log(error)
-    this.toast.warning(`${error}`,'! Error')
-  });
+ if(this.findProductoForm.value.Find !=='')
+ {
 
+    this.apiP.getProductoByName(Name).subscribe(data =>{
+
+      console.log(Name)
+      this.productos = data;
+
+    },
+    (error) =>
+    {
+      console.log(error)
+      this.toast.warning(`${error}`,'! Error')
+    });
+
+ }
+ else
+    {
+      this.toast.warning('No hay Productos Disponibles','! Error')
+    }
+
+ 
 };
 
 findProductByCategory(Category:any){
