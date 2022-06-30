@@ -38,16 +38,16 @@ export class ProductosService {
   }
 
 
-  getProductoByName(Name: any):Observable<ProductosI>{
+  getProductoByName(Name: any):Observable<ProductosI[]>{
     let direction = this.url +"Producto/Name:"+Name;
-    return this.http.get<ProductosI>( direction).pipe(
+    return this.http.get<ProductosI[]>( direction).pipe(
       catchError( this.handleError)
     );
   }
   
-  getProductoByCategory(Categorie: any):Observable<ProductosI>{
+  getProductoByCategory(Categorie: any):Observable<ProductosI[]>{
     let direction = this.url +"Producto/Category:"+Categorie;
-    return this.http.get<ProductosI>( direction).pipe(
+    return this.http.get<ProductosI[]>( direction).pipe(
       catchError( this.handleError)
     );
   }

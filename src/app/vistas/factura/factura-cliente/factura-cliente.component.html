@@ -36,26 +36,34 @@
         <mat-tab-group>
           <mat-tab label="Por Nombre">
             <ng-template matTabContent>
-                  <div class="col-md-4  mt-3 mb-3 ">
-                    <label class="form-label">Buscar Producto:</label>
-                    <input type="text" class="form-control"  placeholder="Buscar"  placeholder="Buscar Productos....">
-                    <button type="button" class="btn btn-secondary mt-2">Buscar</button>
+              <form [formGroup]="findProductoForm">
+                <div class="col-md-4  mt-3 mb-3 ">
+                  <label class="form-label">Buscar Producto:</label>
+                  <input type="text" class="form-control"  placeholder="Buscar"  formControlName="Find" placeholder="Buscar Productos....">
+                  <div class="btn-group mt-2" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary " (click)="findProductByName(this.findProductoForm.value.Find)">Buscar</button>
+                    <button type="button" class="btn btn-secondary" (click)="clear()">Limpiar</button>
                   </div>
-                
+                </div>
+              </form>
             </ng-template>
           </mat-tab>
           <mat-tab label="Por Categoria"><ng-template matTabContent>
             
-              
-                <div class="col-md-4 mt-3 mb-3">
-                  <select class="form-select"  aria-label="Default select example" >
-                    <option *ngFor="let ven of vendedores" [value]="ven.Id"   >
-                      {{ven.NombreVendedor}} 
-                    </option>
-                  </select>
-                  <button type="button" class="btn btn-secondary mt-2">Buscar</button>
+            <form [formGroup]="findProductoForm">
+              <div class="col-md-4 mt-3 mb-3">
+                <select class="form-select"  formControlName="Categories" aria-label="Default select example" >
+                  <option *ngFor="let cat of categorias" [value]="cat.Categoria"   >
+                    {{cat.Categoria}} 
+                  </option>
+                </select>
+                <div class="btn-group mt-2" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-primary " (click)="findProductByCategory(this.findProductoForm.value.Categories)">Buscar</button>
+                  <button type="button" class="btn btn-secondary" (click)="clear()">Limpiar</button>
                 </div>
-              
+              </div>
+            </form>
+                
           </ng-template>
         </mat-tab>
         </mat-tab-group>
@@ -66,7 +74,7 @@
                 <div class="col-md-4">
                   
                     <label  class="form-label">Producto:</label>
-                    <input type="text" class="form-control" formControlName="NombreProducto" placeholder="Producto">
+                    <input type="text" class="form-control" formControlName="NombreProducto" readonly placeholder="Producto">
                     
                 </div>
                 

@@ -12,6 +12,8 @@ import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import { DatePipe } from '@angular/common';
 import { FacturaService } from 'src/app/services/factura/factura.service';
 import { DetalleFacturaI } from 'src/app/Models/Factura/detalleFactura.interface';
+import { CategoriasService } from 'src/app/services/categorias/categorias.service';
+import { CategoriasI } from 'src/app/Models/Categorias/categorias.interface';
 
 
 
@@ -23,13 +25,15 @@ import { DetalleFacturaI } from 'src/app/Models/Factura/detalleFactura.interface
 export class FacturaClienteComponent implements OnInit {
 
   constructor(private activeroute:ActivatedRoute, private router: Router, private api:ApiService, 
-    private toast:ToastrService, private apiV: VendedorService, private apiP:ProductosService, private apiF:FacturaService) { }
+    private toast:ToastrService, private apiV: VendedorService, private apiP:ProductosService, 
+    private apiF:FacturaService, private apiCa:CategoriasService) { }
 
 /* Funcion Para Variable Comunes*/
   datosCliente!: ClienteI;
   vendedores: VendedorI[] =[];
   datosVendedor!:VendedorI;
   productos: ProductosI[] =[];
+  categorias:CategoriasI[]=[];
   dataPro: ProductosI | undefined;
   dataDetalleFactura!: DetalleFacturaI;
   datosDetalleProducto: ProductosI[] =[];
@@ -68,6 +72,12 @@ export class FacturaClienteComponent implements OnInit {
   });
 
 
+  findProductoForm= new UntypedFormGroup({
+    Find: new UntypedFormControl('',[Validators.required]),
+    Categories: new UntypedFormControl('',[Validators.required])
+  });
+
+
       
     /*Detalle Form*/
     detalleForm= new UntypedFormGroup({
@@ -94,13 +104,36 @@ export class FacturaClienteComponent implements OnInit {
     this.api.GetClienteByid(clienteId).subscribe( data =>
     {
       this.datosCliente = data;
-    }),
+    },
+    (error) =>
+    {
+      console.log(error)
+      this.toast.warning(`${error}`,'! Error')
+    });
 
     /*Fuente Dato Pruducto*/
     this.apiP.getAllProductos().subscribe(data =>
     {
       this.productos = data;
-    }),
+    },
+    (error) =>
+    {
+      console.log(error)
+      this.toast.warning(`${error}`,'! Error')
+    });
+
+
+    this.apiCa.getAllCategoria().subscribe(data=>{
+    
+      this.categorias = data;
+      
+     },
+        
+     (error) =>{
+       console.log(error)
+         this.toast.warning(`${error}`,'! Error')
+     });
+
 
     /*Fuente dato Vendedor*/
     this.apiV.getAllVendedor().subscribe(data=>
@@ -135,6 +168,11 @@ export class FacturaClienteComponent implements OnInit {
         
       });
 
+    },
+    (error) =>
+    {
+      console.log(error)
+      this.toast.warning(`${error}`,'! Error')
     })  
   };
 
@@ -196,6 +234,50 @@ deleteItemCar( id:number )
     }
 };
 
+findProductByName(Name:string){
+  console.log(Name)
+  this.apiP.getProductoByName(Name).subscribe(data =>{
+
+    console.log(Name)
+    this.productos = data;
+  
+  },
+  (error) =>
+  {
+    console.log(error)
+    this.toast.warning(`${error}`,'! Error')
+  });
+
+};
+
+findProductByCategory(Category:any){
+
+this.apiP.getProductoByCategory(Category).subscribe(data =>{
+
+  this.productos = data;
+
+},
+(error) =>
+{
+  console.log(error)
+  this.toast.warning(`${error}`,'! Error')
+});
+
+};
+
+clear(){
+
+  this.apiP.getAllProductos().subscribe(data =>
+    {
+      this.productos = data;
+    },
+    (error) =>
+    {
+      console.log(error)
+      this.toast.warning(`${error}`,'! Error')
+    })
+
+};
 
 /*Capturar Datos Paginacion Productos*/
   cambiarPagina(e:PageEvent)
